@@ -56,15 +56,71 @@
 		1A22E1732A1B6FA40068EE92 /* Dastur */ = {
 			isa = PBXGroup;
 			children = (
-				1A22E1742A1B6FA40068EE92 /* AppDelegate.swift */,
-				1A22E1762A1B6FA40068EE92 /* SceneDelegate.swift */,
-				1A22E1782A1B6FA40068EE92 /* ViewController.swift */,
-				1A22E17A2A1B6FA40068EE92 /* Main.storyboard */,
+				1A22E18D2A1B7CE90068EE92 /* Managers */,
+				1A22E1882A1B7CB10068EE92 /* Resources */,
+				1A22E1892A1B7CC90068EE92 /* Models */,
+				1A22E18B2A1B7CD50068EE92 /* Views */,
+				1A22E18A2A1B7CCF0068EE92 /* ViewModels */,
+				1A22E18C2A1B7CDA0068EE92 /* Controllers */,
 				1A22E17D2A1B6FA50068EE92 /* Assets.xcassets */,
-				1A22E17F2A1B6FA50068EE92 /* LaunchScreen.storyboard */,
 				1A22E1822A1B6FA50068EE92 /* Info.plist */,
 			);
 			path = Dastur;
+			sourceTree = "<group>";
+		};
+		1A22E1882A1B7CB10068EE92 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1A22E1742A1B6FA40068EE92 /* AppDelegate.swift */,
+				1A22E1762A1B6FA40068EE92 /* SceneDelegate.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		1A22E1892A1B7CC90068EE92 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1A22E18A2A1B7CCF0068EE92 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		1A22E18B2A1B7CD50068EE92 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1A22E18E2A1B7CFD0068EE92 /* Storyboards */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1A22E18C2A1B7CDA0068EE92 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1A22E1782A1B6FA40068EE92 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		1A22E18D2A1B7CE90068EE92 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		1A22E18E2A1B7CFD0068EE92 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				1A22E17A2A1B6FA40068EE92 /* Main.storyboard */,
+				1A22E17F2A1B6FA50068EE92 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
