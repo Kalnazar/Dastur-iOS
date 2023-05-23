@@ -52,6 +52,9 @@ extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDa
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let width = scrollView.frame.width
         currentPage = Int(scrollView.contentOffset.x / width)
+        
+        let cell = OnboardingCollectionViewCell()
+        print(cell.currentPage)
     }
 }
 
@@ -64,6 +67,9 @@ extension OnboardingViewController: DelegatePageControl {
     
     func scrollToItem(indexPath: IndexPath) {
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-        currentPage += 1
+    }
+    
+    func initializationCurrentPage(index: Int) {
+        self.currentPage = index
     }
 }

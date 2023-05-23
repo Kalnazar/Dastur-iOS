@@ -55,7 +55,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="393" height="851"/>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8Z4-u1-Da8">
-                                                    <rect key="frame" x="36.666666666666657" y="341.66666666666669" width="320" height="167.66666666666669"/>
+                                                    <rect key="frame" x="36.666666666666657" y="345.66666666666669" width="320" height="159.66666666666669"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Its a Big World Out  There, Go Explore!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOS-oQ-uEP">
                                                             <rect key="frame" x="0.0" y="0.0" width="320" height="71.666666666666671"/>
@@ -81,15 +81,15 @@
                                                             <color key="currentPageIndicatorTintColor" name="AppRed"/>
                                                         </pageControl>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TjH-HD-Jhf">
-                                                            <rect key="frame" x="85" y="117.66666666666663" width="150" height="50"/>
+                                                            <rect key="frame" x="132" y="117.66666666666663" width="56" height="42"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="50" id="WWq-8n-g9L"/>
-                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="YSw-s2-6iM"/>
+                                                                <constraint firstAttribute="height" constant="42" id="WWq-8n-g9L"/>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="56" id="YSw-s2-6iM"/>
                                                             </constraints>
                                                             <state key="normal" title="Button"/>
-                                                            <buttonConfiguration key="configuration" style="plain" title="Next">
-                                                                <color key="baseForegroundColor" systemColor="labelColor"/>
+                                                            <buttonConfiguration key="configuration" style="plain" image="arrow.right" catalog="system">
+                                                                <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </buttonConfiguration>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -169,13 +169,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.right" catalog="system" width="128" height="95"/>
         <image name="welcome-bg-1" width="375" height="812"/>
         <namedColor name="AppRed">
             <color red="0.75294117647058822" green="0.27843137254901962" blue="0.3411764705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

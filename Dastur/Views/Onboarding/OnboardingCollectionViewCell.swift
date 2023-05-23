@@ -10,6 +10,7 @@ import UIKit
 protocol DelegatePageControl {
     func moveToController()
     func scrollToItem(indexPath: IndexPath)
+    func initializationCurrentPage(index: Int)
 }
 
 class OnboardingCollectionViewCell: UICollectionViewCell {
@@ -24,11 +25,6 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
     var currentPage = 0 {
         didSet {
             pageControl.currentPage = currentPage
-            if currentPage == slidesCount - 1 {
-                nextButton.setTitle("Get Started", for: .normal)
-            } else {
-                nextButton.setTitle("Next", for: .normal)
-            }
         }
     }
     var delegate: DelegatePageControl?
@@ -48,6 +44,7 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
             currentPage += 1
             let indexPath = IndexPath(item: currentPage, section: 0)
             self.delegate?.scrollToItem(indexPath: indexPath)
+            self.delegate?.initializationCurrentPage(index: currentPage)
         }
     }
 }
