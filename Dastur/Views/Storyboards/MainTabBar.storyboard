@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LA6-Tb-4kx">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
@@ -18,7 +18,7 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" selectedImage="house" catalog="system" id="CYc-sc-qmb">
+                    <tabBarItem key="tabBarItem" title="" image="house" catalog="system" selectedImage="house" id="CYc-sc-qmb">
                         <color key="badgeColor" systemColor="labelColor"/>
                     </tabBarItem>
                 </viewController>
@@ -37,9 +37,9 @@
                     </tabBar>
                     <connections>
                         <segue destination="Y6W-OH-hqX" kind="relationship" relationship="viewControllers" id="lme-zv-hMC"/>
-                        <segue destination="VpD-w5-Kad" kind="relationship" relationship="viewControllers" id="qfm-Qs-zWA"/>
-                        <segue destination="YvQ-T8-rX9" kind="relationship" relationship="viewControllers" id="sGj-Ft-MOt"/>
-                        <segue destination="TdF-En-neP" kind="relationship" relationship="viewControllers" id="Z33-us-wVR"/>
+                        <segue destination="VpD-w5-Kad" kind="relationship" relationship="viewControllers" id="6hD-N6-KWf"/>
+                        <segue destination="YvQ-T8-rX9" kind="relationship" relationship="viewControllers" id="Rod-6D-PNa"/>
+                        <segue destination="TdF-En-neP" kind="relationship" relationship="viewControllers" id="WnX-Ig-bOE"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m3G-rP-sQn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -98,7 +98,7 @@
         <scene sceneID="gqc-Rb-YIA">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VpD-w5-Kad" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" selectedImage="doc.text.magnifyingglass" catalog="system" id="1an-V7-CCv">
+                    <tabBarItem key="tabBarItem" title="" image="doc.text.magnifyingglass" selectedImage="doc.text.magnifyingglass" catalog="system" id="1an-V7-CCv">
                         <color key="badgeColor" systemColor="labelColor"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -119,7 +119,7 @@
         <scene sceneID="2LU-0h-T4B">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YvQ-T8-rX9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" selectedImage="heart" catalog="system" id="7mB-gs-1nj">
+                    <tabBarItem key="tabBarItem" title="" image="heart" catalog="system" selectedImage="heart" id="7mB-gs-1nj">
                         <color key="badgeColor" systemColor="labelColor"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -140,7 +140,7 @@
         <scene sceneID="vZn-GP-Sez">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TdF-En-neP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" selectedImage="person" catalog="system" id="ria-Ia-Fny">
+                    <tabBarItem key="tabBarItem" title="" image="person" catalog="system" selectedImage="person" id="ria-Ia-Fny">
                         <color key="badgeColor" systemColor="labelColor"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -159,6 +159,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="doc.text.magnifyingglass" width="128" height="128"/>
         <image name="doc.text.magnifyingglass" catalog="system" width="110" height="128"/>
         <image name="heart" catalog="system" width="128" height="107"/>
         <image name="house" catalog="system" width="128" height="104"/>

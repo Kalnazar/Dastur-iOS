@@ -17,6 +17,6 @@ class SignInViewController: UIViewController {
         let storyboard = UIStoryboard(name: "MainTabBar", bundle: nil)
         let tabBar = storyboard.instantiateViewController(withIdentifier: MainTabBarViewController.identifier) as! MainTabBarViewController
         tabBar.modalPresentationStyle = .fullScreen
-        present(tabBar, animated: true)
+        self.present(tabBar, animated: true)
     }
 }

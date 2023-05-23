@@ -13,16 +13,23 @@ class MainTabBarViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBarSetup()
+        tabBar.tintColor = .label
     }
     
+    /*
     func tabBarSetup() {
         let homeScreen = UINavigationController(rootViewController: HomeViewController())
         let categoriesScreen = UINavigationController(rootViewController: CategoriesViewController())
         let favoritesScreen = UINavigationController(rootViewController: FavoritesViewController())
         let profileScreen = UINavigationController(rootViewController: ProfileViewController())
-                
+        
+        homeScreen.tabBarItem.image = UIImage(systemName: "house")
+        categoriesScreen.tabBarItem.image = UIImage(systemName: "doc.text.magnifyingglass")
+        favoritesScreen.tabBarItem.image = UIImage(systemName: "heart")
+        profileScreen.tabBarItem.image = UIImage(systemName: "person")
+        
         tabBar.tintColor = .label
-        setViewControllers([homeScreen, categoriesScreen, favoritesScreen, profileScreen], animated: true)
+        self.viewControllers = [homeScreen, categoriesScreen, favoritesScreen, profileScreen]
     }
+    */
 }

@@ -33,11 +33,11 @@
 		1ADBBA8A2A1D0CF100513AF7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1ADBBA892A1D0CF000513AF7 /* GoogleService-Info.plist */; };
 		1ADBBA8C2A1D0F0600513AF7 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADBBA8B2A1D0F0600513AF7 /* Service.swift */; };
 		1ADBBA8E2A1D10DC00513AF7 /* MainTabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1ADBBA8D2A1D10DC00513AF7 /* MainTabBar.storyboard */; };
-		1ADBBA902A1D13D200513AF7 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADBBA8F2A1D13D200513AF7 /* MainTabBarViewController.swift */; };
 		1ADBBA922A1D14DD00513AF7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADBBA912A1D14DD00513AF7 /* HomeViewController.swift */; };
 		1ADBBA962A1D153D00513AF7 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADBBA952A1D153D00513AF7 /* FavoritesViewController.swift */; };
 		1ADBBA982A1D154C00513AF7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADBBA972A1D154C00513AF7 /* ProfileViewController.swift */; };
 		1ADBBA9A2A1D159C00513AF7 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADBBA992A1D159C00513AF7 /* CategoriesViewController.swift */; };
+		1ADBBA9C2A1D20C900513AF7 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADBBA9B2A1D20C900513AF7 /* MainTabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,11 +64,11 @@
 		1ADBBA892A1D0CF000513AF7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1ADBBA8B2A1D0F0600513AF7 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		1ADBBA8D2A1D10DC00513AF7 /* MainTabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBar.storyboard; sourceTree = "<group>"; };
-		1ADBBA8F2A1D13D200513AF7 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		1ADBBA912A1D14DD00513AF7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1ADBBA952A1D153D00513AF7 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		1ADBBA972A1D154C00513AF7 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		1ADBBA992A1D159C00513AF7 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
+		1ADBBA9B2A1D20C900513AF7 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,7 +184,6 @@
 		1A22E18F2A1B7E450068EE92 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				1ADBBA8F2A1D13D200513AF7 /* MainTabBarViewController.swift */,
 				1ADBBA912A1D14DD00513AF7 /* HomeViewController.swift */,
 				1ADBBA992A1D159C00513AF7 /* CategoriesViewController.swift */,
 				1ADBBA952A1D153D00513AF7 /* FavoritesViewController.swift */,
@@ -196,6 +195,7 @@
 		1A22E1902A1B7E4E0068EE92 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				1ADBBA9B2A1D20C900513AF7 /* MainTabBarViewController.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -354,8 +354,8 @@
 				1ADBBA982A1D154C00513AF7 /* ProfileViewController.swift in Sources */,
 				1ADBBA7B2A1D044C00513AF7 /* SignInViewController.swift in Sources */,
 				1A9346E92A1C98E400FE0F2B /* OnboardingViewController.swift in Sources */,
+				1ADBBA9C2A1D20C900513AF7 /* MainTabBarViewController.swift in Sources */,
 				1ADBBA8C2A1D0F0600513AF7 /* Service.swift in Sources */,
-				1ADBBA902A1D13D200513AF7 /* MainTabBarViewController.swift in Sources */,
 				1ADBBA792A1CFD1B00513AF7 /* Core.swift in Sources */,
 				1ADBBA922A1D14DD00513AF7 /* HomeViewController.swift in Sources */,
 				1ADBBA962A1D153D00513AF7 /* FavoritesViewController.swift in Sources */,
