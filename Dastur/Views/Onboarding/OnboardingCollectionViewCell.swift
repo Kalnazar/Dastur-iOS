@@ -28,17 +28,16 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
         }
     }
     var delegate: DelegatePageControl?
-    var slidesCount = 0
     
     func setup(_ slide: OnboardingSlide, currentPage: Int, slidesCount: Int) {
         imageView.image = UIImage(named: slide.image)
         slideLabel.text = slide.title
+        self.pageControl.numberOfPages = slidesCount
         self.currentPage = currentPage
-        self.slidesCount = slidesCount
     }
     
     @IBAction func nextButtonPressed(_ sender: UIButton) {
-        if currentPage == slidesCount - 1 {
+        if currentPage == pageControl.numberOfPages - 1 {
             self.delegate?.moveToController()
         } else {
             currentPage += 1

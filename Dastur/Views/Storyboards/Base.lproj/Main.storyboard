@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cBS-PS-09T">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
@@ -9,6 +9,11 @@
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Bold.ttf">
+            <string>Montserrat-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Welcome View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -17,14 +22,42 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="auth-bg" translatesAutoresizingMaskIntoConstraints="NO" id="VZN-ka-dQ5">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Its a Big World Out  There, Go Explore!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KR9-Pu-zSo">
+                                <rect key="frame" x="21.666666666666657" y="392" width="350" height="68.333333333333314"/>
+                                <color key="backgroundColor" name="AppRed"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="350" id="mVP-oC-y5G"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="28"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="KR9-Pu-zSo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0mw-1t-OD1"/>
+                            <constraint firstItem="VZN-ka-dQ5" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="2WM-yF-VeI"/>
+                            <constraint firstItem="VZN-ka-dQ5" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="86Y-YQ-EZe"/>
+                            <constraint firstAttribute="bottom" secondItem="VZN-ka-dQ5" secondAttribute="bottom" id="PeV-n9-0UI"/>
+                            <constraint firstItem="VZN-ka-dQ5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="iuV-S0-C1o"/>
+                            <constraint firstItem="KR9-Pu-zSo" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="yJz-Dt-F8Y"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="f44-2k-HvO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1040" y="-2"/>
+            <point key="canvasLocation" x="120" y="-2"/>
         </scene>
         <!--Onboarding View Controller-->
         <scene sceneID="pvg-hZ-eRR">
@@ -55,15 +88,15 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="393" height="851"/>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8Z4-u1-Da8">
-                                                    <rect key="frame" x="36.666666666666657" y="345.66666666666669" width="320" height="159.66666666666669"/>
+                                                    <rect key="frame" x="21.666666666666657" y="347.33333333333331" width="350" height="156.33333333333331"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Its a Big World Out  There, Go Explore!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOS-oQ-uEP">
-                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="71.666666666666671"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="350" height="68.333333333333329"/>
                                                             <color key="backgroundColor" name="AppRed"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="320" id="hxp-lV-rmp"/>
+                                                                <constraint firstAttribute="width" constant="350" id="hxp-lV-rmp"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
+                                                            <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="28"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                             <userDefinedRuntimeAttributes>
@@ -73,7 +106,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </label>
                                                         <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="krm-Ws-8iB">
-                                                            <rect key="frame" x="102" y="81.666666666666629" width="115.66666666666669" height="26"/>
+                                                            <rect key="frame" x="116.99999999999997" y="78.333333333333371" width="115.66666666666666" height="26"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="26" id="Cgc-hb-tmx"/>
                                                             </constraints>
@@ -81,7 +114,7 @@
                                                             <color key="currentPageIndicatorTintColor" name="AppRed"/>
                                                         </pageControl>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TjH-HD-Jhf">
-                                                            <rect key="frame" x="132" y="117.66666666666663" width="56" height="42"/>
+                                                            <rect key="frame" x="147" y="114.33333333333337" width="56" height="42"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="42" id="WWq-8n-g9L"/>
@@ -149,27 +182,10 @@
             </objects>
             <point key="canvasLocation" x="-686.25954198473278" y="-2.1126760563380285"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="54c-KC-CsU">
-            <objects>
-                <navigationController storyboardIdentifier="WelcomeNC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hhs-nr-DOG" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gu0-mT-rTo">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="GwQ-HW-Fkw"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QC0-lQ-yqa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="169" y="-2"/>
-        </scene>
     </scenes>
     <resources>
         <image name="arrow.right" catalog="system" width="128" height="95"/>
+        <image name="auth-bg" width="1500" height="3248"/>
         <image name="welcome-bg-1" width="375" height="812"/>
         <namedColor name="AppRed">
             <color red="0.75294117647058822" green="0.27843137254901962" blue="0.3411764705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

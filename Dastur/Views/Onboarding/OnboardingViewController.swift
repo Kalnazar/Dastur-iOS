@@ -11,6 +11,7 @@ class OnboardingViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
+    static let identifier = "OnboardingViewController"
     var slides: [OnboardingSlide] = []
     var currentPage = 0
     
@@ -35,7 +36,7 @@ extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDa
             return UICollectionViewCell()
         }
 
-        cell.setup(slides[indexPath.row], currentPage: currentPage, slidesCount: slides.count)
+        cell.setup(slides[indexPath.row], currentPage: indexPath.row, slidesCount: slides.count)
         cell.delegate = self
         
         return cell
@@ -50,19 +51,23 @@ extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let width = scrollView.frame.width
-        currentPage = Int(scrollView.contentOffset.x / width)
+        let visibleCells = collectionView.visibleCells
         
-        let cell = OnboardingCollectionViewCell()
-        print(cell.currentPage)
+        guard let currentCell = visibleCells.first as? OnboardingCollectionViewCell,
+            let indexPath = collectionView.indexPath(for: currentCell) else {
+                return
+        }
+        
+        currentPage = indexPath.row
+        currentCell.currentPage = currentPage
     }
+
 }
 
 extension OnboardingViewController: DelegatePageControl {
     func moveToController() {
-        let controller = storyboard?.instantiateViewController(withIdentifier: "WelcomeNC") as! UINavigationController
-        controller.modalPresentationStyle = .fullScreen
-        present(controller, animated: true)
+        Core.shared.setIsNotNewUser()
+        dismiss(animated: true)
     }
     
     func scrollToItem(indexPath: IndexPath) {
