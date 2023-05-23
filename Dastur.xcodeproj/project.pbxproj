@@ -23,6 +23,8 @@
 		1ADBBA762A1CF8A500513AF7 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1ADBBA702A1CF8A500513AF7 /* Poppins-SemiBold.ttf */; };
 		1ADBBA772A1CF8A500513AF7 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1ADBBA722A1CF8A500513AF7 /* Montserrat-Bold.ttf */; };
 		1ADBBA792A1CFD1B00513AF7 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADBBA782A1CFD1B00513AF7 /* Core.swift */; };
+		1ADBBA7B2A1D044C00513AF7 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADBBA7A2A1D044C00513AF7 /* SignInViewController.swift */; };
+		1ADBBA7D2A1D045D00513AF7 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADBBA7C2A1D045D00513AF7 /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		1ADBBA702A1CF8A500513AF7 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		1ADBBA722A1CF8A500513AF7 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		1ADBBA782A1CFD1B00513AF7 /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
+		1ADBBA7A2A1D044C00513AF7 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		1ADBBA7C2A1D045D00513AF7 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +170,8 @@
 			isa = PBXGroup;
 			children = (
 				1A9346F52A1CADD700FE0F2B /* WelcomeViewController.swift */,
+				1ADBBA7A2A1D044C00513AF7 /* SignInViewController.swift */,
+				1ADBBA7C2A1D045D00513AF7 /* SignUpViewController.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -297,7 +303,9 @@
 				1A22E1772A1B6FA40068EE92 /* SceneDelegate.swift in Sources */,
 				1A9346EE2A1C9C2600FE0F2B /* UIView+Extension.swift in Sources */,
 				1A9346F02A1C9CC300FE0F2B /* OnboardingSlide.swift in Sources */,
+				1ADBBA7D2A1D045D00513AF7 /* SignUpViewController.swift in Sources */,
 				1A9346F22A1C9FBB00FE0F2B /* OnboardingCollectionViewCell.swift in Sources */,
+				1ADBBA7B2A1D044C00513AF7 /* SignInViewController.swift in Sources */,
 				1A9346E92A1C98E400FE0F2B /* OnboardingViewController.swift in Sources */,
 				1ADBBA792A1CFD1B00513AF7 /* Core.swift in Sources */,
 				1A9346F62A1CADD700FE0F2B /* WelcomeViewController.swift in Sources */,
