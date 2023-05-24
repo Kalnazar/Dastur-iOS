@@ -3,10 +3,19 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+        <array key="Poppins-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Home View Controller-->
         <scene sceneID="s0d-6b-0kx">
@@ -32,6 +41,7 @@
                 <tabBarController storyboardIdentifier="MainTabBarViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LA6-Tb-4kx" customClass="MainTabBarViewController" customModule="Dastur" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OaG-i6-FSk">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -85,20 +95,111 @@
                     <view key="view" contentMode="scaleToFill" id="gM7-nt-ihE">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mv6-oz-kCc">
+                                <rect key="frame" x="117.33333333333333" y="155" width="158.33333333333337" height="197.33333333333337"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="kfj-5Q-b0F">
+                                        <rect key="frame" x="24.333333333333329" y="1" width="109.99999999999999" height="108.66666666666666"/>
+                                        <color key="tintColor" systemColor="labelColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="110" id="AQp-PE-0H2"/>
+                                            <constraint firstAttribute="height" constant="110" id="Kd7-wE-QBY"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EOq-ef-ep7">
+                                        <rect key="frame" x="24.666666666666671" y="119.99999999999999" width="109.00000000000001" height="25.333333333333329"/>
+                                        <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9pa-7j-h5f">
+                                        <rect key="frame" x="0.0" y="155.33333333333331" width="158.33333333333334" height="42"/>
+                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="30"/>
+                                        <color key="textColor" name="AppGold"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="J7Y-kG-2hb">
+                                <rect key="frame" x="0.0" y="362.33333333333326" width="393" height="338.66666666666674"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="80" id="xzt-kz-mTB">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xzt-kz-mTB" id="hyd-kQ-rUy">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="80"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="D7R-Sj-BKi">
+                                <rect key="frame" x="20" y="709" width="353" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f4e-oS-EaS">
+                                        <rect key="frame" x="0.0" y="0.0" width="151.66666666666666" height="50"/>
+                                        <color key="tintColor" name="AppGray"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Sign Out">
+                                            <fontDescription key="titleFontDescription" name="Poppins-Medium" family="Poppins" pointSize="15"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="signOut:" destination="LWA-Ym-wl1" eventType="touchUpInside" id="hoc-dC-CNP"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rJY-gF-DFZ">
+                                        <rect key="frame" x="201.66666666666663" y="0.0" width="151.33333333333337" height="50"/>
+                                        <color key="backgroundColor" name="AppRed"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="etb-1B-emb"/>
+                                            <constraint firstAttribute="height" constant="50" id="yyz-YR-KI8"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="EDIT">
+                                            <fontDescription key="titleFontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="15"/>
+                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="otO-iL-Gsh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="otO-iL-Gsh" firstAttribute="trailing" secondItem="D7R-Sj-BKi" secondAttribute="trailing" constant="20" id="8QG-HJ-ESO"/>
+                            <constraint firstItem="J7Y-kG-2hb" firstAttribute="trailing" secondItem="otO-iL-Gsh" secondAttribute="trailing" id="AwN-7i-RrG"/>
+                            <constraint firstItem="D7R-Sj-BKi" firstAttribute="leading" secondItem="otO-iL-Gsh" secondAttribute="leading" constant="20" id="Fya-w4-CAR"/>
+                            <constraint firstItem="mv6-oz-kCc" firstAttribute="top" secondItem="otO-iL-Gsh" secondAttribute="top" id="HS5-9T-ylE"/>
+                            <constraint firstItem="otO-iL-Gsh" firstAttribute="bottom" secondItem="D7R-Sj-BKi" secondAttribute="bottom" constant="10" id="L0d-zB-QWN"/>
+                            <constraint firstItem="D7R-Sj-BKi" firstAttribute="top" secondItem="J7Y-kG-2hb" secondAttribute="bottom" constant="8" symbolic="YES" id="N63-8I-tXr"/>
+                            <constraint firstItem="J7Y-kG-2hb" firstAttribute="top" secondItem="mv6-oz-kCc" secondAttribute="bottom" constant="10" id="R85-lC-1QY"/>
+                            <constraint firstItem="J7Y-kG-2hb" firstAttribute="leading" secondItem="otO-iL-Gsh" secondAttribute="leading" id="tLd-nb-9PR"/>
+                            <constraint firstItem="mv6-oz-kCc" firstAttribute="centerX" secondItem="otO-iL-Gsh" secondAttribute="centerX" id="xJM-L5-I3Z"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="XyK-AB-k9M"/>
+                    <connections>
+                        <outlet property="imageView" destination="kfj-5Q-b0F" id="gGQ-M4-R6O"/>
+                        <outlet property="tableView" destination="J7Y-kG-2hb" id="Htt-JI-u8r"/>
+                        <outlet property="usernameLabel" destination="9pa-7j-h5f" id="Zxz-I4-yTN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q4v-Dp-ILO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1305" y="1463"/>
+            <point key="canvasLocation" x="1304.5801526717557" y="1462.6760563380283"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gqc-Rb-YIA">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VpD-w5-Kad" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="doc.text.magnifyingglass" selectedImage="doc.text.magnifyingglass" catalog="system" id="1an-V7-CCv">
+                    <tabBarItem key="tabBarItem" title="" image="doc.text.magnifyingglass" catalog="system" selectedImage="doc.text.magnifyingglass" id="1an-V7-CCv">
                         <color key="badgeColor" systemColor="labelColor"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -159,11 +260,20 @@
         </scene>
     </scenes>
     <resources>
-        <image name="doc.text.magnifyingglass" width="128" height="128"/>
         <image name="doc.text.magnifyingglass" catalog="system" width="110" height="128"/>
         <image name="heart" catalog="system" width="128" height="107"/>
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="person" catalog="system" width="128" height="121"/>
+        <image name="person.circle" catalog="system" width="128" height="123"/>
+        <namedColor name="AppGold">
+            <color red="1" green="0.72156862745098038" blue="0.35294117647058826" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="AppGray">
+            <color red="0.63529411764705879" green="0.65098039215686276" blue="0.73333333333333328" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="AppRed">
+            <color red="0.75294117647058822" green="0.27843137254901962" blue="0.3411764705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

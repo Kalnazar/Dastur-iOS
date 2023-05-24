@@ -18,4 +18,12 @@ class Core {
     func setIsNotNewUser() {
         UserDefaults.standard.set(true, forKey: "isNewUser")
     }
+    
+    func isUserSignedIn() -> Bool {
+        return UserDefaults.standard.bool(forKey: "isUserSignedIn")
+    }
+    
+    func setIsUserSignedIn(isSigned: Bool) {
+        UserDefaults.standard.set(isSigned, forKey: "isUserSignedIn")
+    }
 }
