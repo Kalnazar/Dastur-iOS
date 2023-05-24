@@ -20,23 +20,63 @@ class ProfileViewController: UIViewController {
         imageSetup()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(didPressChangeProfilePic))
-        imageView.addGestureRecognizer(gesture)
-    }
-    
     @objc private func didPressChangeProfilePic() {
-        print("Change pic")
+        presentPhotoActionSheet()
     }
     
     private func imageSetup() {
         imageView.cornerRadius = imageView.frame.size.width / 2
         imageView.clipsToBounds = true
+        imageView.layer.masksToBounds = true
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(didPressChangeProfilePic))
+        imageView.addGestureRecognizer(gesture)
     }
     
     @IBAction func signOut(_ sender: UIButton) {
         Core.shared.setIsUserSignedIn(isSigned: false)
         self.dismiss(animated: true)
     }
+}
+
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func presentPhotoActionSheet() {
+        let actionSheet = UIAlertController(title: "Profile Picture", message: "How would you like to select a picture", preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        actionSheet.addAction(UIAlertAction(title: "Take Photo", style: .default, handler: { [weak self] _ in
+            self?.presentCamera()
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Choose Photo", style: .default, handler: { [weak self] _ in
+            self?.presentPhotoPicker()
+        }))
+        present(actionSheet, animated: true)
+    }
+    
+    func presentCamera() {
+        let vc = UIImagePickerController()
+        vc.sourceType = .camera
+        vc.delegate = self
+        vc.allowsEditing = true
+        present(vc, animated: true)
+    }
+    
+    func presentPhotoPicker() {
+        let vc = UIImagePickerController()
+        vc.sourceType = .photoLibrary
+        vc.delegate = self
+        vc.allowsEditing = true
+        present(vc, animated: true)
+        
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true)
+        let selectedImage = info[UIImagePickerController.InfoKey.editedImage] as! UIImage
+        self.imageView.image = selectedImage
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true)
+    }
+    
 }

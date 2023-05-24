@@ -97,24 +97,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mv6-oz-kCc">
-                                <rect key="frame" x="117.33333333333333" y="155" width="158.33333333333337" height="197.33333333333337"/>
+                                <rect key="frame" x="96.666666666666686" y="154.99999999999997" width="200" height="287.33333333333326"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="kfj-5Q-b0F">
-                                        <rect key="frame" x="24.333333333333329" y="1" width="109.99999999999999" height="108.66666666666666"/>
+                                        <rect key="frame" x="0.0" y="1" width="200" height="198.66666666666666"/>
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="110" id="AQp-PE-0H2"/>
-                                            <constraint firstAttribute="height" constant="110" id="Kd7-wE-QBY"/>
+                                            <constraint firstAttribute="width" constant="200" id="AQp-PE-0H2"/>
+                                            <constraint firstAttribute="height" constant="200" id="Kd7-wE-QBY"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EOq-ef-ep7">
-                                        <rect key="frame" x="24.666666666666671" y="119.99999999999999" width="109.00000000000001" height="25.333333333333329"/>
+                                        <rect key="frame" x="45.333333333333329" y="210" width="108.99999999999999" height="25.333333333333343"/>
                                         <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9pa-7j-h5f">
-                                        <rect key="frame" x="0.0" y="155.33333333333331" width="158.33333333333334" height="42"/>
+                                        <rect key="frame" x="20.666666666666657" y="245.33333333333331" width="158.33333333333334" height="42"/>
                                         <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="30"/>
                                         <color key="textColor" name="AppGold"/>
                                         <nil key="highlightedColor"/>
@@ -122,7 +122,7 @@
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="J7Y-kG-2hb">
-                                <rect key="frame" x="0.0" y="362.33333333333326" width="393" height="338.66666666666674"/>
+                                <rect key="frame" x="0.0" y="452.33333333333331" width="393" height="248.66666666666669"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="80" id="xzt-kz-mTB">
