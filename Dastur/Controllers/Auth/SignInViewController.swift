@@ -43,5 +43,3 @@ class SignInViewController: UIViewController {
         }
     }
 }
-
-//Core.shared.setIsUserSignedIn(isSigned: true)

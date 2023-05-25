@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ProfileViewController: UIViewController {
 
@@ -33,8 +34,20 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func signOut(_ sender: UIButton) {
-//        Core.shared.setIsUserSignedIn(isSigned: false)
-        self.dismiss(animated: true)
+        let actionSheet = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Log out", style: .destructive, handler: { [weak self] _ in
+            guard let strongSelf = self else {
+                return
+            }
+            do {
+                try FirebaseAuth.Auth.auth().signOut()
+                strongSelf.dismiss(animated: true)
+            } catch {
+                print("Failed to log out")
+            }
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(actionSheet, animated: true)
     }
 }
 

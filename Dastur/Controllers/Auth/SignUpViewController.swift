@@ -35,7 +35,7 @@ class SignUpViewController: UIViewController {
                 return
             }
             guard !exists else {
-                strongSelf.present(Service.shared.createAlertController(title: "", message: "Looks like a user account for that email address already exists"), animated: true)
+                strongSelf.present(Service.shared.createAlertController(title: "Error", message: "Looks like a user account for that email address already exists"), animated: true)
                 return
             }
             
