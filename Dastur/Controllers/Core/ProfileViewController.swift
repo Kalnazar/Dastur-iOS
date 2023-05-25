@@ -33,7 +33,7 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func signOut(_ sender: UIButton) {
-        Core.shared.setIsUserSignedIn(isSigned: false)
+//        Core.shared.setIsUserSignedIn(isSigned: false)
         self.dismiss(animated: true)
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class WelcomeViewController: UIViewController {
     
@@ -17,11 +18,15 @@ class WelcomeViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        validateAuth()
+    }
+    
+    private func validateAuth() {
         if Core.shared.isNewUser() {
             let vc = storyboard?.instantiateViewController(withIdentifier: OnboardingViewController.identifier) as! OnboardingViewController
             vc.modalPresentationStyle = .fullScreen
             present(vc, animated: true)
-        } else if Core.shared.isUserSignedIn() {
+        } else if FirebaseAuth.Auth.auth().currentUser != nil {
             let storyboard = UIStoryboard(name: "MainTabBar", bundle: nil)
             let tabBar = storyboard.instantiateViewController(withIdentifier: MainTabBarViewController.identifier) as! MainTabBarViewController
             tabBar.modalTransitionStyle = .crossDissolve

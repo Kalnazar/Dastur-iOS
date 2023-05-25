@@ -17,6 +17,8 @@
 		1A9346F02A1C9CC300FE0F2B /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9346EF2A1C9CC300FE0F2B /* OnboardingSlide.swift */; };
 		1A9346F22A1C9FBB00FE0F2B /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9346F12A1C9FBB00FE0F2B /* OnboardingCollectionViewCell.swift */; };
 		1A9346F62A1CADD700FE0F2B /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9346F52A1CADD700FE0F2B /* WelcomeViewController.swift */; };
+		1A9D735D2A1FD716008FBB6F /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9D735C2A1FD716008FBB6F /* DatabaseManager.swift */; };
+		1A9D735F2A1FD8EE008FBB6F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9D735E2A1FD8EE008FBB6F /* User.swift */; };
 		1ADBBA732A1CF8A500513AF7 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1ADBBA6D2A1CF8A500513AF7 /* Poppins-Medium.ttf */; };
 		1ADBBA742A1CF8A500513AF7 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1ADBBA6E2A1CF8A500513AF7 /* Poppins-Regular.ttf */; };
 		1ADBBA752A1CF8A500513AF7 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1ADBBA6F2A1CF8A500513AF7 /* Poppins-Bold.ttf */; };
@@ -53,6 +55,8 @@
 		1A9346EF2A1C9CC300FE0F2B /* OnboardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlide.swift; sourceTree = "<group>"; };
 		1A9346F12A1C9FBB00FE0F2B /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
 		1A9346F52A1CADD700FE0F2B /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		1A9D735C2A1FD716008FBB6F /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		1A9D735E2A1FD8EE008FBB6F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1ADBBA6D2A1CF8A500513AF7 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		1ADBBA6E2A1CF8A500513AF7 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		1ADBBA6F2A1CF8A500513AF7 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
@@ -133,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				1A9346EF2A1C9CC300FE0F2B /* OnboardingSlide.swift */,
+				1A9D735E2A1FD8EE008FBB6F /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -167,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				1ADBBA8B2A1D0F0600513AF7 /* Service.swift */,
+				1A9D735C2A1FD716008FBB6F /* DatabaseManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -349,6 +355,7 @@
 				1A22E1772A1B6FA40068EE92 /* SceneDelegate.swift in Sources */,
 				1A9346EE2A1C9C2600FE0F2B /* UIView+Extension.swift in Sources */,
 				1A9346F02A1C9CC300FE0F2B /* OnboardingSlide.swift in Sources */,
+				1A9D735D2A1FD716008FBB6F /* DatabaseManager.swift in Sources */,
 				1ADBBA7D2A1D045D00513AF7 /* SignUpViewController.swift in Sources */,
 				1A9346F22A1C9FBB00FE0F2B /* OnboardingCollectionViewCell.swift in Sources */,
 				1ADBBA982A1D154C00513AF7 /* ProfileViewController.swift in Sources */,
@@ -358,6 +365,7 @@
 				1ADBBA8C2A1D0F0600513AF7 /* Service.swift in Sources */,
 				1ADBBA792A1CFD1B00513AF7 /* Core.swift in Sources */,
 				1ADBBA922A1D14DD00513AF7 /* HomeViewController.swift in Sources */,
+				1A9D735F2A1FD8EE008FBB6F /* User.swift in Sources */,
 				1ADBBA962A1D153D00513AF7 /* FavoritesViewController.swift in Sources */,
 				1ADBBA9A2A1D159C00513AF7 /* CategoriesViewController.swift in Sources */,
 				1A9346F62A1CADD700FE0F2B /* WelcomeViewController.swift in Sources */,
