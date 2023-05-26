@@ -12,6 +12,9 @@
 		1A22E17C2A1B6FA40068EE92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A22E17A2A1B6FA40068EE92 /* Main.storyboard */; };
 		1A22E17E2A1B6FA50068EE92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A22E17D2A1B6FA50068EE92 /* Assets.xcassets */; };
 		1A22E1812A1B6FA50068EE92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A22E17F2A1B6FA50068EE92 /* LaunchScreen.storyboard */; };
+		1A61CA042A20D574004D4D73 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 1A61CA032A20D574004D4D73 /* SDWebImage */; };
+		1A61CA062A20D574004D4D73 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1A61CA052A20D574004D4D73 /* SDWebImageMapKit */; };
+		1A61CA092A20D5DC004D4D73 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 1A61CA082A20D5DC004D4D73 /* JGProgressHUD */; };
 		1A9346E92A1C98E400FE0F2B /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9346E82A1C98E400FE0F2B /* OnboardingViewController.swift */; };
 		1A9346EE2A1C9C2600FE0F2B /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9346ED2A1C9C2600FE0F2B /* UIView+Extension.swift */; };
 		1A9346F02A1C9CC300FE0F2B /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9346EF2A1C9CC300FE0F2B /* OnboardingSlide.swift */; };
@@ -80,10 +83,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A61CA042A20D574004D4D73 /* SDWebImage in Frameworks */,
 				1ADBBA842A1D0C8C00513AF7 /* FirebaseDatabase in Frameworks */,
 				1ADBBA862A1D0C8C00513AF7 /* FirebaseFirestore in Frameworks */,
 				1ADBBA802A1D0C8C00513AF7 /* FirebaseAnalytics in Frameworks */,
+				1A61CA092A20D5DC004D4D73 /* JGProgressHUD in Frameworks */,
 				1ADBBA882A1D0C8C00513AF7 /* FirebaseStorage in Frameworks */,
+				1A61CA062A20D574004D4D73 /* SDWebImageMapKit in Frameworks */,
 				1ADBBA822A1D0C8C00513AF7 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -285,6 +291,9 @@
 				1ADBBA832A1D0C8C00513AF7 /* FirebaseDatabase */,
 				1ADBBA852A1D0C8C00513AF7 /* FirebaseFirestore */,
 				1ADBBA872A1D0C8C00513AF7 /* FirebaseStorage */,
+				1A61CA032A20D574004D4D73 /* SDWebImage */,
+				1A61CA052A20D574004D4D73 /* SDWebImageMapKit */,
+				1A61CA082A20D5DC004D4D73 /* JGProgressHUD */,
 			);
 			productName = Dastur;
 			productReference = 1A22E1712A1B6FA40068EE92 /* Dastur.app */;
@@ -316,6 +325,8 @@
 			mainGroup = 1A22E1682A1B6FA40068EE92;
 			packageReferences = (
 				1ADBBA7E2A1D0C8C00513AF7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				1A61CA022A20D574004D4D73 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				1A61CA072A20D5DC004D4D73 /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
 			);
 			productRefGroup = 1A22E1722A1B6FA40068EE92 /* Products */;
 			projectDirPath = "";
@@ -588,6 +599,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1A61CA022A20D574004D4D73 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		1A61CA072A20D5DC004D4D73 /* XCRemoteSwiftPackageReference "JGProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JonasGessner/JGProgressHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		1ADBBA7E2A1D0C8C00513AF7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -599,6 +626,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1A61CA032A20D574004D4D73 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A61CA022A20D574004D4D73 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		1A61CA052A20D574004D4D73 /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A61CA022A20D574004D4D73 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
+		1A61CA082A20D5DC004D4D73 /* JGProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A61CA072A20D5DC004D4D73 /* XCRemoteSwiftPackageReference "JGProgressHUD" */;
+			productName = JGProgressHUD;
+		};
 		1ADBBA7F2A1D0C8C00513AF7 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1ADBBA7E2A1D0C8C00513AF7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
