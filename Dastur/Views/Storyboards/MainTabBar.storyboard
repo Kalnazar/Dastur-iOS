@@ -156,21 +156,6 @@
             </objects>
             <point key="canvasLocation" x="-141.22137404580153" y="1462.6760563380283"/>
         </scene>
-        <!--Search Results View Controller-->
-        <scene sceneID="EeP-in-MMr">
-            <objects>
-                <viewController storyboardIdentifier="SearchResultsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pIQ-TL-gFu" customClass="SearchResultsViewController" customModule="Dastur" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="pLB-XW-Eb4">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="dKF-4y-pMc"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xva-Wd-CRl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-844" y="1463"/>
-        </scene>
         <!--Favorites-->
         <scene sceneID="Bjw-Ze-uw2">
             <objects>

@@ -14,6 +14,7 @@ class CategoriesViewController: UIViewController {
         let controller = UISearchController(searchResultsController: SearchResultsViewController())
         controller.searchBar.placeholder = "Search..."
         controller.searchBar.searchBarStyle = .minimal
+        controller.searchBar.tintColor = .label
         return controller
     }()
     
@@ -59,13 +60,20 @@ extension CategoriesViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemWidth = collectionView.bounds.width - 40
         let itemHeight = 110.0
-        return CGSize(width: itemWidth, height: itemHeight)
+        return CGSize(width: UIScreen.main.bounds.width - 20, height: itemHeight)
     }
 }
 
 extension CategoriesViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        guard let query = searchBar.text,
+              !query.trimmingCharacters(in: .whitespaces).isEmpty,
+              query.trimmingCharacters(in: .whitespaces).count >= 3,
+              let resultsController = searchController.searchResultsController as? SearchResultsViewController else {
+                  return
+        }
     }
     
 }
