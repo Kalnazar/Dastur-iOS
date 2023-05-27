@@ -46,6 +46,8 @@ class SignInViewController: UIViewController {
                 return
             }
             
+            UserDefaults.standard.set(email, forKey: "email")
+            
             let storyboard = UIStoryboard(name: "MainTabBar", bundle: nil)
             let tabBar = storyboard.instantiateViewController(withIdentifier: MainTabBarViewController.identifier) as! MainTabBarViewController
             tabBar.modalPresentationStyle = .fullScreen

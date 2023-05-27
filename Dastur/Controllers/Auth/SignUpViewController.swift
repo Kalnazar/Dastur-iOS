@@ -55,7 +55,11 @@ class SignUpViewController: UIViewController {
                     return
                 }
                 
-                DatabaseManager.shared.insertUser(with: User(username: username, email: email))
+                DatabaseManager.shared.insertUser(with: User(username: username, email: email), completion: { success in
+                    if success {
+                        print("Successfully inserted!")
+                    }
+                })
                 
                 let storyboard = UIStoryboard(name: "MainTabBar", bundle: nil)
                 let tabBar = storyboard.instantiateViewController(withIdentifier: MainTabBarViewController.identifier) as! MainTabBarViewController

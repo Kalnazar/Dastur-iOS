@@ -19,10 +19,33 @@ class ProfileViewController: UIViewController {
         view.backgroundColor = .systemBackground
         
         imageSetup()
-        if Core.shared.DoesUserHaveProfilePicture() {
-            print("User has an image")
-            getImage()
+        profileData()
+    }
+    
+    private func profileData() {
+        guard let email = UserDefaults.standard.value(forKey: "email") as? String else {
+            return
         }
+        StorageManager.shared.downloadURL(for: email) { [weak self] result in
+            switch result {
+            case .success(let url):
+                self?.downloadImage(imageView: (self?.imageView)!, url: url)
+            case .failure(let error):
+                print("Failed to get download url: \(error)")
+            }
+        }
+    }
+    
+    private func downloadImage(imageView: UIImageView, url: URL) {
+        URLSession.shared.dataTask(with: url, completionHandler: { data, _, error in
+            guard let data = data, error == nil else {
+                return
+            }
+            DispatchQueue.main.async {
+                let image = UIImage(data: data)
+                imageView.image = image
+            }
+        }).resume()
     }
     
     private func uploadImage() {
@@ -44,28 +67,6 @@ class ProfileViewController: UIViewController {
                 print(downloadUrl)
             case .failure(let error):
                 print("Storage manager error: \(error)")
-            }
-        }
-    }
-    
-    private func getImage() {
-        guard let user = FirebaseAuth.Auth.auth().currentUser else {
-            print ("Failed to get a user")
-            return
-        }
-        let userData = User(username: user.email!, email: user.email!)
-        
-        let filename = userData.profilePictureFileName
-        StorageManager.shared.getProfilePicture(filename: filename) { [weak self] results in
-            guard let strongSelf = self else {
-                return
-            }
-            switch results {
-            case .success(let data):
-                Core.shared.setDoesUserHaveProfilePicture()
-                strongSelf.imageView.image = UIImage(data: data)
-            case .failure(let error):
-                print("Failed while trying to get an image\(error)")
             }
         }
     }
