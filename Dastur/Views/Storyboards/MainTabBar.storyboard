@@ -68,9 +68,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7gs-zX-s7v">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7gs-zX-s7v">
                                 <rect key="frame" x="0.0" y="103" width="393" height="749"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="6Rr-dn-FO9">
                                     <size key="itemSize" width="393" height="149"/>
@@ -109,6 +108,10 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="pRu-hO-CjA" firstAttribute="leading" secondItem="gdl-03-4TD" secondAttribute="leading" id="FI9-zf-TW1"/>
+                                                        <constraint firstItem="dzo-LP-3YX" firstAttribute="leading" secondItem="gdl-03-4TD" secondAttribute="leading" id="vjo-za-jzv"/>
+                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
@@ -137,6 +140,12 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gyO-a5-rws"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="7gs-zX-s7v" firstAttribute="trailing" secondItem="gyO-a5-rws" secondAttribute="trailing" id="C5g-Aa-zAH"/>
+                            <constraint firstItem="7gs-zX-s7v" firstAttribute="top" secondItem="gyO-a5-rws" secondAttribute="top" id="HTE-kF-Vma"/>
+                            <constraint firstItem="7gs-zX-s7v" firstAttribute="leading" secondItem="gyO-a5-rws" secondAttribute="leading" id="J5u-qt-ZOP"/>
+                            <constraint firstAttribute="bottom" secondItem="7gs-zX-s7v" secondAttribute="bottom" id="LIB-fz-wer"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Categories" id="XwS-Nf-L5f"/>
                     <connections>
@@ -146,6 +155,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mLf-bh-crm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-141.22137404580153" y="1462.6760563380283"/>
+        </scene>
+        <!--Search Results View Controller-->
+        <scene sceneID="EeP-in-MMr">
+            <objects>
+                <viewController storyboardIdentifier="SearchResultsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pIQ-TL-gFu" customClass="SearchResultsViewController" customModule="Dastur" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pLB-XW-Eb4">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="dKF-4y-pMc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xva-Wd-CRl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-844" y="1463"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="Bjw-Ze-uw2">
@@ -185,7 +209,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tradition name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3az-w3-lbd">
-                                                    <rect key="frame" x="134" y="183" width="125.33333333333331" height="27"/>
+                                                    <rect key="frame" x="143.66666666666666" y="183" width="105.66666666666666" height="27"/>
                                                     <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>

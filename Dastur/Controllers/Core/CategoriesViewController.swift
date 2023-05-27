@@ -10,6 +10,12 @@ import UIKit
 class CategoriesViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    private let searchController: UISearchController = {
+        let controller = UISearchController(searchResultsController: SearchResultsViewController())
+        controller.searchBar.placeholder = "Search..."
+        controller.searchBar.searchBarStyle = .minimal
+        return controller
+    }()
     
     let types: [String] = ["Традиции приема гостей", "Свадебные традиции", "Обычаи, связанные с детьми", "Казахские игры и развлечения", "Традиции помощи ближнему", "Айтыс"]
     
@@ -19,8 +25,10 @@ class CategoriesViewController: UIViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        navigationItem.searchController = searchController
+        searchController.searchResultsUpdater = self
     }
-
 }
 
 extension CategoriesViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -53,4 +61,11 @@ extension CategoriesViewController: UICollectionViewDelegate, UICollectionViewDa
         let itemHeight = 110.0
         return CGSize(width: itemWidth, height: itemHeight)
     }
+}
+
+extension CategoriesViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+    }
+    
 }
