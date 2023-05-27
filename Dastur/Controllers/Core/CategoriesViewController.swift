@@ -8,8 +8,8 @@
 import UIKit
 
 class CategoriesViewController: UIViewController {
-
-    @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var collectionView: UICollectionView!
     
     let types: [String] = ["Традиции приема гостей", "Свадебные традиции", "Обычаи, связанные с детьми", "Казахские игры и развлечения", "Традиции помощи ближнему", "Айтыс"]
     
@@ -17,30 +17,40 @@ class CategoriesViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.tableHeaderView = nil
-        tableView.separatorStyle = .none
+        collectionView.delegate = self
+        collectionView.dataSource = self
     }
 
 }
 
-extension CategoriesViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTableViewCell.identifier, for: indexPath) as? CategoryTableViewCell else {
-            return UITableViewCell()
+extension CategoriesViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) {
+            cell.contentView.backgroundColor = UIColor(named: "AppClicked")
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                cell.contentView.backgroundColor = nil
+            }
         }
-        
-        cell.configure(image: "auth-bg", title: types[indexPath.row], amount: types.count)
-        
+        collectionView.deselectItem(at: indexPath, animated: true)
+        print(types[indexPath.row])
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as? CategoryCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        cell.configure(image: "default", title: types[indexPath.row], amount: types.count)
         return cell
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return types.count
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 110
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let itemWidth = collectionView.bounds.width - 40
+        let itemHeight = 110.0
+        return CGSize(width: itemWidth, height: itemHeight)
     }
 }

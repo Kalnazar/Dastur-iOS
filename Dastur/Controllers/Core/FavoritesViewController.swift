@@ -11,7 +11,7 @@ class FavoritesViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
-    private let favourites: [String] = ["Syrga salu"]
+    private let favourites: [String] = ["Syrga salu", "Syrga salu", "Syrga salu", "Syrga salu", "Syrga salu", "Syrga salu"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +24,13 @@ class FavoritesViewController: UIViewController {
 }
 
 extension FavoritesViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) {
+            cell.backgroundColor = UIColor(named: "AppClicked")
+        }
+        print(favourites[indexPath.row])
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavoriteCollectionViewCell.identifier, for: indexPath) as? FavoriteCollectionViewCell else {
             return UICollectionViewCell()

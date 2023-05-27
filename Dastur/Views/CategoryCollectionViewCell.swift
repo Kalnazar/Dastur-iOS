@@ -1,5 +1,5 @@
 //
-//  CategoryTableViewCell.swift
+//  CategoryCollectionViewCell.swift
 //  Dastur
 //
 //  Created by Саят Калназар on 27.05.2023.
@@ -7,11 +7,11 @@
 
 import UIKit
 
-class CategoryTableViewCell: UITableViewCell {
-    static let identifier = "CategoryTableViewCell"
+class CategoryCollectionViewCell: UICollectionViewCell {
+    static let identifier = "CategoryCollectionViewCell"
     
     @IBOutlet weak var typeImageView: UIImageView!
-    @IBOutlet weak var typeTitle: UILabel!
+    @IBOutlet weak var typeName: UILabel!
     @IBOutlet weak var amountOfTraditions: UILabel!
     
     override func layoutSubviews() {
@@ -36,7 +36,7 @@ class CategoryTableViewCell: UITableViewCell {
     
     public func configure(image: String, title: String, amount: Int) {
         typeImageView.image = UIImage(named: image)
-        typeTitle.text = title
+        typeName.text = title
         amountOfTraditions.text = "\(amount) Traditions"
     }
 }
