@@ -7,12 +7,15 @@
 
 import UIKit
 import FirebaseAuth
+import JGProgressHUD
 
 class SignUpViewController: UIViewController {
 
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    
+    private let spinner = JGProgressHUD(style: .dark)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,10 +33,17 @@ class SignUpViewController: UIViewController {
             return
         }
         
+        spinner.show(in: view)
+        
         DatabaseManager.shared.userExists(with: email) { [weak self] exists in
             guard let strongSelf = self else {
                 return
             }
+            
+            DispatchQueue.main.async {
+                strongSelf.spinner.dismiss()
+            }
+            
             guard !exists else {
                 strongSelf.present(Service.shared.createAlertController(title: "Error", message: "Looks like a user account for that email address already exists"), animated: true)
                 return

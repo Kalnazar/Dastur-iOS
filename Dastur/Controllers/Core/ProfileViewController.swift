@@ -19,6 +19,55 @@ class ProfileViewController: UIViewController {
         view.backgroundColor = .systemBackground
         
         imageSetup()
+        if Core.shared.DoesUserHaveProfilePicture() {
+            print("User has an image")
+            getImage()
+        }
+    }
+    
+    private func uploadImage() {
+        guard let image = self.imageView.image,
+              let data = image.pngData() else {
+            return
+        }
+        guard let user = FirebaseAuth.Auth.auth().currentUser else {
+            print ("Failed to get a user")
+            return
+        }
+        let userData = User(username: user.email!, email: user.email!)
+        
+        let filename = userData.profilePictureFileName
+        StorageManager.shared.uploadProfilePicture(with: data, filename: filename) { results in
+            switch results {
+            case .success(let downloadUrl):
+                Core.shared.setDoesUserHaveProfilePicture()
+                print(downloadUrl)
+            case .failure(let error):
+                print("Storage manager error: \(error)")
+            }
+        }
+    }
+    
+    private func getImage() {
+        guard let user = FirebaseAuth.Auth.auth().currentUser else {
+            print ("Failed to get a user")
+            return
+        }
+        let userData = User(username: user.email!, email: user.email!)
+        
+        let filename = userData.profilePictureFileName
+        StorageManager.shared.getProfilePicture(filename: filename) { [weak self] results in
+            guard let strongSelf = self else {
+                return
+            }
+            switch results {
+            case .success(let data):
+                Core.shared.setDoesUserHaveProfilePicture()
+                strongSelf.imageView.image = UIImage(data: data)
+            case .failure(let error):
+                print("Failed while trying to get an image\(error)")
+            }
+        }
     }
     
     @objc private func didPressChangeProfilePic() {
@@ -79,13 +128,13 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         vc.delegate = self
         vc.allowsEditing = true
         present(vc, animated: true)
-        
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true)
         let selectedImage = info[UIImagePickerController.InfoKey.editedImage] as! UIImage
         self.imageView.image = selectedImage
+        uploadImage()
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

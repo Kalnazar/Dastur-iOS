@@ -10,20 +10,21 @@ import Foundation
 class Core {
     
     static let shared = Core()
+    private let defaults = UserDefaults.standard
     
     func isNewUser() -> Bool {
-        return !UserDefaults.standard.bool(forKey: "isNewUser")
+        return !defaults.bool(forKey: "isNewUser")
     }
 
     func setIsNotNewUser() {
-        UserDefaults.standard.set(true, forKey: "isNewUser")
+        defaults.set(true, forKey: "isNewUser")
     }
     
-    func isUserSignedIn() -> Bool {
-        return UserDefaults.standard.bool(forKey: "isUserSignedIn")
+    func DoesUserHaveProfilePicture() -> Bool {
+        return defaults.bool(forKey: "doesUserHaveProfilePicture")
     }
     
-    func setIsUserSignedIn(isSigned: Bool) {
-        UserDefaults.standard.set(isSigned, forKey: "isUserSignedIn")
+    func setDoesUserHaveProfilePicture() {
+        defaults.set(true, forKey: "doesUserHaveProfilePicture")
     }
 }
