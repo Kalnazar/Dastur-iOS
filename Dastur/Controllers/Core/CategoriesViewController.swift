@@ -18,7 +18,10 @@ class CategoriesViewController: UIViewController {
         return controller
     }()
     
-    let types: [String] = ["Традиции приема гостей", "Свадебные традиции", "Обычаи, связанные с детьми", "Казахские игры и развлечения", "Традиции помощи ближнему", "Айтыс"]
+    private let types: [String] = ["Традиции приема гостей", "Свадебные традиции", "Обычаи, связанные с детьми", "Казахские игры и развлечения", "Традиции помощи ближнему", "Айтыс"]
+    
+    private var traditions = [[String: String]]()
+    private var hasFetched = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,9 +61,9 @@ extension CategoriesViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemWidth = collectionView.bounds.width - 40
+        let itemWidth = UIScreen.main.bounds.width - 20
         let itemHeight = 110.0
-        return CGSize(width: UIScreen.main.bounds.width - 20, height: itemHeight)
+        return CGSize(width: itemWidth, height: itemHeight)
     }
 }
 
@@ -70,10 +73,48 @@ extension CategoriesViewController: UISearchResultsUpdating {
         let searchBar = searchController.searchBar
         guard let query = searchBar.text,
               !query.trimmingCharacters(in: .whitespaces).isEmpty,
-              query.trimmingCharacters(in: .whitespaces).count >= 3,
               let resultsController = searchController.searchResultsController as? SearchResultsViewController else {
                   return
         }
+        resultsController.results.removeAll()
+        self.searchFrom(query: query)
     }
     
+    private func searchFrom(query: String) {
+        // check if array has firebase results
+        if hasFetched {
+            // if it does: filter
+            filterTraditions(with: query)
+        } else {
+            // if not, fetch then filter
+            DatabaseManager.shared.getAllData(from: "users", completion: { [weak self] result in
+                switch result {
+                case .success(let collection):
+                    self?.hasFetched = true
+                    self?.traditions = collection
+                    self?.filterTraditions(with: query)
+                case .failure(let error):
+                    print("Failed to get data: \(error)")
+                }
+            })
+        }
+    }
+    
+    private func filterTraditions(with query: String) {
+        // update the UI: either show results or show no results label
+        guard hasFetched else {
+            return
+        }
+        let results: [[String: String]] = self.traditions.filter({
+            guard let name = $0["username"]?.lowercased() else {
+                return false
+            }
+            return name.hasPrefix(query.lowercased())
+        })
+        guard let resultsController = searchController.searchResultsController as? SearchResultsViewController else {
+            return
+        }
+        resultsController.results = results
+        resultsController.collectionView.reloadData()
+    }
 }

@@ -78,4 +78,17 @@ extension DatabaseManager {
         })
     }
     
+    public func getAllData(from collection: String, completion: @escaping (Result<[[String: String]], Error>) -> Void) {
+        database.child(collection).observeSingleEvent(of: .value, with: { snapshot in
+            guard let collection = snapshot.value as? [[String: String]] else {
+                completion(.failure(DatabaseError.failedToFetch))
+                return
+            }
+            completion(.success(collection))
+        })
+    }
+    
+    public enum DatabaseError: Error {
+        case failedToFetch
+    }
 }

@@ -8,8 +8,10 @@
 import UIKit
 
 class SearchResultsViewController: UIViewController {
+    
+    public var results = [[String: String]]()
 
-    private let collectionView: UICollectionView = {
+    public let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(SearchResultCollectionViewCell.self, forCellWithReuseIdentifier: SearchResultCollectionViewCell.identifier)
@@ -21,6 +23,8 @@ class SearchResultsViewController: UIViewController {
         view.addSubview(collectionView)
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        
     }
 
     override func viewDidLayoutSubviews() {
@@ -45,12 +49,12 @@ extension SearchResultsViewController: UICollectionViewDelegate, UICollectionVie
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchResultCollectionViewCell.identifier, for: indexPath) as? SearchResultCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.configure(image: "default", tradition: "Tradition")
+        cell.configure(image: "default", tradition: results[indexPath.row]["username"] ?? "")
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return results.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
