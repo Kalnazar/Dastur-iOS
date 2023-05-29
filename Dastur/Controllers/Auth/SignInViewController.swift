@@ -53,7 +53,7 @@ class SignInViewController: UIViewController {
                 return
             }
             
-            UserDefaults.standard.set(email, forKey: "email")
+            UserDefaults.standard.set(email, forKey: "userEmailKey")
             strongSelf.navigationController?.dismiss(animated: true)
         }
     }

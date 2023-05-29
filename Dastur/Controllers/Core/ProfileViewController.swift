@@ -19,10 +19,8 @@ class ProfileViewController: UIViewController {
         view.backgroundColor = .systemBackground
         
         imageSetup()
-        DispatchQueue.main.async {
-            self.profileImage()
-            self.getInfo()
-        }
+        getInfo()
+        profileImage()
     }
     
     private func getInfo() {
@@ -37,7 +35,7 @@ class ProfileViewController: UIViewController {
     }
     
     private func profileImage() {
-        guard let email = UserDefaults.standard.value(forKey: "email") as? String else {
+        guard let email = UserDefaults.standard.value(forKey: "userEmailKey") as? String else {
             return
         }
         let safeEmail = DatabaseManager.safeEmail(email: email)
@@ -94,8 +92,8 @@ class ProfileViewController: UIViewController {
             guard let strongSelf = self else {
                 return
             }
-            UserDefaults.standard.removeObject(forKey: "userEmailKey")
-            UserDefaults.standard.removeObject(forKey: "userNameKey")
+            UserDefaults.standard.setValue(nil, forKey: "userEmailKey")
+            UserDefaults.standard.setValue(nil, forKey: "userNameKey")
             do {
                 try FirebaseAuth.Auth.auth().signOut()
                 let welcomeScreen = strongSelf.storyboard?.instantiateViewController(withIdentifier: "WelcomNavigationController") as! UINavigationController
