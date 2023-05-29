@@ -8,30 +8,29 @@
 import UIKit
 import FirebaseAuth
 
-class WelcomeViewController: UIViewController {
+protocol DismissWelcomeController {
+    func dismissController()
+}
+
+class WelcomeViewController: UIViewController, DismissWelcomeController {
     
     static let identifier = "WelcomeViewController"
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        validateAuth()
-    }
-    
-    private func validateAuth() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if Core.shared.isNewUser() {
-            let vc = storyboard?.instantiateViewController(withIdentifier: OnboardingViewController.identifier) as! OnboardingViewController
+            let vc = storyboard.instantiateViewController(withIdentifier: OnboardingViewController.identifier) as! OnboardingViewController
             vc.modalPresentationStyle = .fullScreen
             present(vc, animated: true)
-        } else if FirebaseAuth.Auth.auth().currentUser != nil {
-            let storyboard = UIStoryboard(name: "MainTabBar", bundle: nil)
-            let tabBar = storyboard.instantiateViewController(withIdentifier: MainTabBarViewController.identifier) as! MainTabBarViewController
-            tabBar.modalTransitionStyle = .crossDissolve
-            tabBar.modalPresentationStyle = .overFullScreen
-            self.present(tabBar, animated: true)
         }
+        let vc = storyboard.instantiateViewController(withIdentifier: SignInViewController.identifier) as! SignInViewController
+        vc.delegate = self
+
+    }
+    
+    func dismissController() {
+        print("Hello")
+        navigationController?.dismiss(animated: true)
     }
 }

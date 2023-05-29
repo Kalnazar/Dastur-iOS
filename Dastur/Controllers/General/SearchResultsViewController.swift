@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 class SearchResultsViewController: UIViewController {
     
     public var results = [[String: String]]()
+    public let spinner = JGProgressHUD(style: .dark)
 
     public let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -20,11 +22,10 @@ class SearchResultsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.addSubview(collectionView)
         collectionView.delegate = self
         collectionView.dataSource = self
-        
-        
     }
 
     override func viewDidLayoutSubviews() {
@@ -49,7 +50,8 @@ extension SearchResultsViewController: UICollectionViewDelegate, UICollectionVie
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchResultCollectionViewCell.identifier, for: indexPath) as? SearchResultCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.configure(image: "default", tradition: results[indexPath.row]["username"] ?? "")
+        let result = results[indexPath.row]
+        cell.configure(TraditionViewModel(name: result["name"]!, image: result["image_name"]!, rating: result["rating"]!))
         return cell
     }
     

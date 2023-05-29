@@ -19,37 +19,42 @@ class ProfileViewController: UIViewController {
         view.backgroundColor = .systemBackground
         
         imageSetup()
-        profileData()
+        DispatchQueue.main.async {
+            self.profileImage()
+            self.getInfo()
+        }
     }
     
-    private func profileData() {
+    private func getInfo() {
+        let defaults = UserDefaults.standard
+        
+        Service.getUserInfo {
+            self.usernameLabel.text = defaults.string(forKey: "userNameKey")
+        } onError: { error in
+            print(error!.localizedDescription)
+        }
+
+    }
+    
+    private func profileImage() {
         guard let email = UserDefaults.standard.value(forKey: "email") as? String else {
             return
         }
-        StorageManager.shared.downloadURL(for: email) { [weak self] result in
+        let safeEmail = DatabaseManager.safeEmail(email: email)
+        let filename = safeEmail + "_profile_picture.png"
+        let path = "images/" + filename
+        StorageManager.shared.downloadURL(for: path) { [weak self] result in
             switch result {
             case .success(let url):
-                self?.downloadImage(imageView: (self?.imageView)!, url: url)
+                StorageManager.shared.downloadImage(imageView: (self?.imageView)!, url: url)
             case .failure(let error):
                 print("Failed to get download url: \(error)")
             }
         }
     }
     
-    private func downloadImage(imageView: UIImageView, url: URL) {
-        URLSession.shared.dataTask(with: url, completionHandler: { data, _, error in
-            guard let data = data, error == nil else {
-                return
-            }
-            DispatchQueue.main.async {
-                let image = UIImage(data: data)
-                imageView.image = image
-            }
-        }).resume()
-    }
-    
     private func uploadImage() {
-        guard let image = self.imageView.image,
+        guard let image = imageView.image,
               let data = image.pngData() else {
             return
         }
@@ -91,7 +96,11 @@ class ProfileViewController: UIViewController {
             }
             do {
                 try FirebaseAuth.Auth.auth().signOut()
-                strongSelf.dismiss(animated: true)
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let welcomeScreen = storyboard.instantiateViewController(withIdentifier: WelcomeViewController.identifier) as! WelcomeViewController
+                welcomeScreen.modalTransitionStyle = .crossDissolve
+                welcomeScreen.modalPresentationStyle = .overFullScreen
+                strongSelf.present(welcomeScreen, animated: true)
             } catch {
                 print("Failed to log out")
             }

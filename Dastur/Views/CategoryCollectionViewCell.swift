@@ -24,14 +24,14 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         typeImageView.clipsToBounds = true
         typeImageView.layer.masksToBounds = true
         
-        self.contentView.layer.cornerRadius = 10.0
-        self.contentView.layer.masksToBounds = true
+        contentView.layer.cornerRadius = 10.0
+        contentView.layer.masksToBounds = true
         
-        self.contentView.layer.borderColor = UIColor(named: "AppGray")?.cgColor ?? UIColor.black.cgColor
-        self.contentView.layer.borderWidth = 1.0
+        contentView.layer.borderColor = UIColor(named: "AppGray")?.cgColor ?? UIColor.black.cgColor
+        contentView.layer.borderWidth = 1.0
         
         let margin: CGFloat = 5.0
-        self.contentView.frame = self.contentView.frame.inset(by: UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin))
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin))
     }
     
     public func configure(image: String, title: String, amount: Int) {

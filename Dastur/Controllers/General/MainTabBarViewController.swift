@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class MainTabBarViewController: UITabBarController {
     
@@ -14,22 +15,18 @@ class MainTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBar.tintColor = .label
+        DispatchQueue.main.async {
+            self.validateAuth()
+        }
     }
     
-    /*
-    func tabBarSetup() {
-        let homeScreen = UINavigationController(rootViewController: HomeViewController())
-        let categoriesScreen = UINavigationController(rootViewController: CategoriesViewController())
-        let favoritesScreen = UINavigationController(rootViewController: FavoritesViewController())
-        let profileScreen = UINavigationController(rootViewController: ProfileViewController())
-        
-        homeScreen.tabBarItem.image = UIImage(systemName: "house")
-        categoriesScreen.tabBarItem.image = UIImage(systemName: "doc.text.magnifyingglass")
-        favoritesScreen.tabBarItem.image = UIImage(systemName: "heart")
-        profileScreen.tabBarItem.image = UIImage(systemName: "person")
-        
-        tabBar.tintColor = .label
-        self.viewControllers = [homeScreen, categoriesScreen, favoritesScreen, profileScreen]
+    private func validateAuth() {
+        if FirebaseAuth.Auth.auth().currentUser == nil {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let welcomeScreen = storyboard.instantiateViewController(withIdentifier: WelcomeViewController.identifier) as! WelcomeViewController
+            welcomeScreen.modalTransitionStyle = .crossDissolve
+            welcomeScreen.modalPresentationStyle = .overFullScreen
+            present(welcomeScreen, animated: true)
+        }
     }
-    */
 }

@@ -67,7 +67,11 @@ extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDa
 extension OnboardingViewController: DelegatePageControl {
     func moveToController() {
         Core.shared.setIsNotNewUser()
-        dismiss(animated: true)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let welcomeScreen = storyboard.instantiateViewController(withIdentifier: WelcomeViewController.identifier) as! WelcomeViewController
+        welcomeScreen.modalTransitionStyle = .crossDissolve
+        welcomeScreen.modalPresentationStyle = .overFullScreen
+        present(welcomeScreen, animated: true)
     }
     
     func scrollToItem(indexPath: IndexPath) {
@@ -75,6 +79,6 @@ extension OnboardingViewController: DelegatePageControl {
     }
     
     func initializationCurrentPage(index: Int) {
-        self.currentPage = index
+        currentPage = index
     }
 }

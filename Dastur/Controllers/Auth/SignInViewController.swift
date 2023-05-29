@@ -11,10 +11,13 @@ import JGProgressHUD
 
 class SignInViewController: UIViewController {
 
+    static let identifier = "SignInViewController"
+    
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
     private let spinner = JGProgressHUD(style: .dark)
+    var delegate: DismissWelcomeController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +29,7 @@ class SignInViewController: UIViewController {
                 !email.isEmpty,
                 !password.isEmpty,
                 password.count >= 6 else {
-            present(Service.shared.createAlertController(title: "Error", message: "Enter all data"), animated: true)
+            present(Service.createAlertController(title: "Error", message: "Enter all data"), animated: true)
             return
         }
         
@@ -47,11 +50,7 @@ class SignInViewController: UIViewController {
             }
             
             UserDefaults.standard.set(email, forKey: "email")
-            
-            let storyboard = UIStoryboard(name: "MainTabBar", bundle: nil)
-            let tabBar = storyboard.instantiateViewController(withIdentifier: MainTabBarViewController.identifier) as! MainTabBarViewController
-            tabBar.modalPresentationStyle = .fullScreen
-            strongSelf.present(tabBar, animated: true)
+            strongSelf.delegate?.dismissController()
         }
     }
 }

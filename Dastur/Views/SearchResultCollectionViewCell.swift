@@ -32,7 +32,6 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "Poppins-Regular", size: 14)
-        label.text = "Rating: 4.5"
         label.textAlignment = .right
         return label
     }()
@@ -53,9 +52,18 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
         setupConstraints()
     }
     
-    public func configure(image: String, tradition: String) {
-        traditionImageView.image = UIImage(named: image)
-        traditionName.text = tradition
+    public func configure(_ tradition: TraditionViewModel) {
+        let path = "traditions/" + tradition.image
+        StorageManager.shared.downloadURL(for: path) { [weak self] result in
+            switch result {
+            case .success(let url):
+                StorageManager.shared.downloadImage(imageView: self!.traditionImageView, url: url)
+            case .failure(let error):
+                print("Failed to get download url: \(error)")
+            }
+        }
+        traditionName.text = tradition.name
+        ratingLabel.text = tradition.rating
     }
     
     private func setupViews() {

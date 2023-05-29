@@ -29,7 +29,7 @@ class SignUpViewController: UIViewController {
                 !email.isEmpty,
                 !password.isEmpty,
                 password.count >= 6 else {
-            present(Service.shared.createAlertController(title: "Error", message: "Enter all data"), animated: true)
+            present(Service.createAlertController(title: "Error", message: "Enter all data"), animated: true)
             return
         }
         
@@ -45,27 +45,18 @@ class SignUpViewController: UIViewController {
             }
             
             guard !exists else {
-                strongSelf.present(Service.shared.createAlertController(title: "Error", message: "Looks like a user account for that email address already exists"), animated: true)
+                let alertController = Service.createAlertController(title: "Error", message: "Looks like a user account for that email address already exists")
+                strongSelf.present(alertController, animated: true)
                 return
             }
             
-            FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-                guard authResult != nil, error == nil else {
-                    print("Error creating user")
-                    return
-                }
-                
-                DatabaseManager.shared.insertUser(with: User(username: username, email: email), completion: { success in
-                    if success {
-                        print("Successfully inserted!")
-                    }
-                })
-                
-                let storyboard = UIStoryboard(name: "MainTabBar", bundle: nil)
-                let tabBar = storyboard.instantiateViewController(withIdentifier: MainTabBarViewController.identifier) as! MainTabBarViewController
-                tabBar.modalPresentationStyle = .fullScreen
-                strongSelf.present(tabBar, animated: true)
+            Service.signUpUser(email: email, password: password, username: username) {
+                strongSelf.navigationController?.dismiss(animated: true)
+            } onError: { error in
+                let alertController = Service.createAlertController(title: "Error", message: error!.localizedDescription)
+                strongSelf.present(alertController, animated: true)
             }
+
         }
     }
 }

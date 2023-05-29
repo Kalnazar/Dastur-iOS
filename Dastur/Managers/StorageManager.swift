@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseStorage
+import UIKit
 
 final class StorageManager {
     static let shared = StorageManager()
@@ -19,13 +20,13 @@ final class StorageManager {
     public func uploadProfilePicture(with data: Data,
                                      filename: String,
                                      completion: @escaping UploadPictureCompletion) {
-        storage.child("images/\(filename)").putData(data, metadata: nil) { metaData, error in
+        storage.child("images/\(filename)").putData(data, metadata: nil) { [weak self] metaData, error in
             guard error == nil else {
                 print("Failed to upload data to firebase for picture")
                 completion(.failure(StorageErrors.failedToUpload))
                 return
             }
-            self.storage.child("images/\(filename)").downloadURL { url, error in
+            self?.storage.child("images/\(filename)").downloadURL { url, error in
                 guard let url = url else {
                     print("Failed to get download url")
                     completion(.failure(StorageErrors.failedToGetDownloadUrl))
@@ -44,10 +45,7 @@ final class StorageManager {
         case failedToGetDownloadUrl
     }
     
-    public func downloadURL(for email: String, completion: @escaping (Result<URL, Error>) -> Void) {
-        let safeEmail = DatabaseManager.safeEmail(email: email)
-        let filename = safeEmail + "_profile_picture.png"
-        let path = "images/" + filename
+    public func downloadURL(for path: String, completion: @escaping (Result<URL, Error>) -> Void) {
         let reference = storage.child(path)
         reference.downloadURL { url, error in
             guard let url = url, error == nil else {
@@ -56,5 +54,17 @@ final class StorageManager {
             }
             completion(.success(url))
         }
+    }
+    
+    func downloadImage(imageView: UIImageView, url: URL) {
+        URLSession.shared.dataTask(with: url, completionHandler: { data, _, error in
+            guard let data = data, error == nil else {
+                return
+            }
+            DispatchQueue.main.async {
+                let image = UIImage(data: data)
+                imageView.image = image
+            }
+        }).resume()
     }
 }

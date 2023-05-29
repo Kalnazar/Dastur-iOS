@@ -32,7 +32,7 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
     func setup(_ slide: OnboardingSlide, currentPage: Int, slidesCount: Int) {
         imageView.image = UIImage(named: slide.image)
         slideLabel.text = slide.title
-        self.pageControl.numberOfPages = slidesCount
+        pageControl.numberOfPages = slidesCount
         self.currentPage = currentPage
     }
     

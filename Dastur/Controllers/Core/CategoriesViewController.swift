@@ -6,10 +6,20 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 class CategoriesViewController: UIViewController {
     
+    private let spinner = JGProgressHUD(style: .dark)
+    
+    private var types = [[String: String]]()
+    private var typesFetched = false
+    
+    private var traditions = [[String: String]]()
+    private var hasFetched = false
+    
     @IBOutlet weak var collectionView: UICollectionView!
+    
     private let searchController: UISearchController = {
         let controller = UISearchController(searchResultsController: SearchResultsViewController())
         controller.searchBar.placeholder = "Search..."
@@ -17,11 +27,6 @@ class CategoriesViewController: UIViewController {
         controller.searchBar.tintColor = .label
         return controller
     }()
-    
-    private let types: [String] = ["Традиции приема гостей", "Свадебные традиции", "Обычаи, связанные с детьми", "Казахские игры и развлечения", "Традиции помощи ближнему", "Айтыс"]
-    
-    private var traditions = [[String: String]]()
-    private var hasFetched = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +37,30 @@ class CategoriesViewController: UIViewController {
         
         navigationItem.searchController = searchController
         searchController.searchResultsUpdater = self
+        
+        if !typesFetched {
+            getTypes()
+        }
+    }
+    
+    private func getTypes() {
+        spinner.show(in: view)
+        DatabaseManager.shared.getAllData(from: "types", completion: { [weak self] result in
+            guard let strongSelf = self else {
+                return
+            }
+            switch result {
+            case .success(let types):
+                DispatchQueue.main.async {
+                    strongSelf.types = types
+                    strongSelf.typesFetched = true
+                    strongSelf.collectionView.reloadData()
+                    strongSelf.spinner.dismiss()
+                }
+            case .failure(let error):
+                print("Failed to get data: \(error)")
+            }
+        })
     }
 }
 
@@ -52,7 +81,8 @@ extension CategoriesViewController: UICollectionViewDelegate, UICollectionViewDa
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as? CategoryCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.configure(image: "default", title: types[indexPath.row], amount: types.count)
+        let type = types[indexPath.row]
+        cell.configure(image: "default", title: type["name"]!, amount: types.count)
         return cell
     }
     
@@ -77,22 +107,24 @@ extension CategoriesViewController: UISearchResultsUpdating {
                   return
         }
         resultsController.results.removeAll()
-        self.searchFrom(query: query)
+        resultsController.spinner.show(in: view)
+        searchFrom(query: query)
     }
     
     private func searchFrom(query: String) {
-        // check if array has firebase results
         if hasFetched {
-            // if it does: filter
             filterTraditions(with: query)
         } else {
-            // if not, fetch then filter
-            DatabaseManager.shared.getAllData(from: "users", completion: { [weak self] result in
+            DatabaseManager.shared.getAllData(from: "traditions", completion: { [weak self] result in
+                guard let strongSelf = self else {
+                    return
+                }
                 switch result {
                 case .success(let collection):
-                    self?.hasFetched = true
-                    self?.traditions = collection
-                    self?.filterTraditions(with: query)
+                    print(collection)
+                    strongSelf.hasFetched = true
+                    strongSelf.traditions = collection
+                    strongSelf.filterTraditions(with: query)
                 case .failure(let error):
                     print("Failed to get data: \(error)")
                 }
@@ -101,12 +133,11 @@ extension CategoriesViewController: UISearchResultsUpdating {
     }
     
     private func filterTraditions(with query: String) {
-        // update the UI: either show results or show no results label
         guard hasFetched else {
             return
         }
-        let results: [[String: String]] = self.traditions.filter({
-            guard let name = $0["username"]?.lowercased() else {
+        let results: [[String: String]] = traditions.filter({
+            guard let name = $0["name"]?.lowercased() else {
                 return false
             }
             return name.hasPrefix(query.lowercased())
@@ -115,6 +146,9 @@ extension CategoriesViewController: UISearchResultsUpdating {
             return
         }
         resultsController.results = results
-        resultsController.collectionView.reloadData()
+        DispatchQueue.main.async {
+            resultsController.collectionView.reloadData()
+            resultsController.spinner.dismiss()
+        }
     }
 }

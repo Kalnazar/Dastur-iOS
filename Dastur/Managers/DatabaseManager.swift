@@ -19,7 +19,6 @@ final class DatabaseManager {
         safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
         return safeEmail
     }
-    
 }
 
 // MARK: - Account Management
@@ -44,7 +43,10 @@ extension DatabaseManager {
     /// Inserts new user to database
     /// - Parameter user: (username, email)
     public func insertUser(with user: User, completion: @escaping (Bool) -> Void) {
-        self.database.child("users").observeSingleEvent(of: .value, with: { snapshot in
+        self.database.child("users").observeSingleEvent(of: .value, with: { [weak self] snapshot in
+            guard let strongSelf = self else {
+                return
+            }
             if var usersCollection = snapshot.value as? [[String: String]] {
                 // append to user dictionary
                 let newElement = [
@@ -52,7 +54,7 @@ extension DatabaseManager {
                     "email": user.safeEmail
                 ]
                 usersCollection.append(newElement)
-                self.database.child("users").setValue(usersCollection, withCompletionBlock: { error, _ in
+                strongSelf.database.child("users").setValue(usersCollection, withCompletionBlock: { error, _ in
                     guard error == nil else {
                         completion(false)
                         return
@@ -67,7 +69,7 @@ extension DatabaseManager {
                         "email": user.safeEmail
                     ]
                 ]
-                self.database.child("users").setValue(newCollection, withCompletionBlock: { error, _ in
+                strongSelf.database.child("users").setValue(newCollection, withCompletionBlock: { error, _ in
                     guard error == nil else {
                         completion(false)
                         return
