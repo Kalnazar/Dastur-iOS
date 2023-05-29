@@ -101,6 +101,15 @@ class ProfileViewController: UIViewController {
                 let welcomeScreen = strongSelf.storyboard?.instantiateViewController(withIdentifier: "WelcomNavigationController") as! UINavigationController
                 welcomeScreen.modalPresentationStyle = .fullScreen
                 strongSelf.present(welcomeScreen, animated: true)
+                DispatchQueue.main.async {
+                    guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                          let sceneDelegate = windowScene.delegate as? SceneDelegate,
+                          let window = sceneDelegate.window else {
+                        return
+                    }
+                    window.rootViewController = strongSelf.storyboard?.instantiateInitialViewController()
+                    window.makeKeyAndVisible()
+                }
             } catch {
                 print("Failed to log out")
             }
@@ -127,7 +136,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
     func presentCamera() {
         let vc = UIImagePickerController()
         vc.sourceType = .camera
-        vc.delegate = self 
+        vc.delegate = self
         vc.allowsEditing = true
         present(vc, animated: true)
     }
