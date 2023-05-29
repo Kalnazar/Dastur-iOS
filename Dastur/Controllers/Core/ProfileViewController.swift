@@ -127,7 +127,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
     func presentCamera() {
         let vc = UIImagePickerController()
         vc.sourceType = .camera
-        vc.delegate = self
+        vc.delegate = self 
         vc.allowsEditing = true
         present(vc, animated: true)
     }
