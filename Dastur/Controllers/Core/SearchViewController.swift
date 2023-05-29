@@ -8,7 +8,7 @@
 import UIKit
 import JGProgressHUD
 
-class CategoriesViewController: UIViewController {
+class SearchViewController: UIViewController {
     
     private let spinner = JGProgressHUD(style: .dark)
     
@@ -64,7 +64,7 @@ class CategoriesViewController: UIViewController {
     }
 }
 
-extension CategoriesViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) {
             cell.contentView.backgroundColor = UIColor(named: "AppClicked")
@@ -97,7 +97,7 @@ extension CategoriesViewController: UICollectionViewDelegate, UICollectionViewDa
     }
 }
 
-extension CategoriesViewController: UISearchResultsUpdating {
+extension SearchViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar

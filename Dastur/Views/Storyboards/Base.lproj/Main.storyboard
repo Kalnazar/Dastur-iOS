@@ -468,7 +468,7 @@
         <!--Categories-->
         <scene sceneID="gdy-gR-yP6">
             <objects>
-                <viewController storyboardIdentifier="CategoriesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="a4o-Fe-kdF" customClass="CategoriesViewController" customModule="Dastur" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="a4o-Fe-kdF" customClass="SearchViewController" customModule="Dastur" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WnE-aP-C1K">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -559,7 +559,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pQv-kP-CGe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4010" y="704"/>
+            <point key="canvasLocation" x="4937" y="711"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="BIA-7o-d0S">
@@ -644,7 +644,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YeE-4b-pCH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4746" y="704"/>
+            <point key="canvasLocation" x="5673" y="711"/>
         </scene>
         <!--Profile-->
         <scene sceneID="8fQ-Q1-Xi3">
@@ -751,7 +751,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q8N-8a-Vsh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5456" y="704"/>
+            <point key="canvasLocation" x="6382" y="711"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Elr-XH-lQC">
