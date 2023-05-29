@@ -15,18 +15,17 @@ class MainTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBar.tintColor = .label
-        DispatchQueue.main.async {
-            self.validateAuth()
-        }
+        validateAuth()
     }
     
     private func validateAuth() {
         if FirebaseAuth.Auth.auth().currentUser == nil {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let welcomeScreen = storyboard.instantiateViewController(withIdentifier: WelcomeViewController.identifier) as! WelcomeViewController
-            welcomeScreen.modalTransitionStyle = .crossDissolve
-            welcomeScreen.modalPresentationStyle = .overFullScreen
-            present(welcomeScreen, animated: true)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
+                guard let strongSelf = self else { return }
+                let welcomeScreen = strongSelf.storyboard?.instantiateViewController(withIdentifier: "WelcomNavigationController") as! UINavigationController
+                welcomeScreen.modalPresentationStyle = .fullScreen
+                strongSelf.present(welcomeScreen, animated: true)
+            }
         }
     }
 }

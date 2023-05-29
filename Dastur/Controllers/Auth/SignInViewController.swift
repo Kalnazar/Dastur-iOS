@@ -9,6 +9,10 @@ import UIKit
 import FirebaseAuth
 import JGProgressHUD
 
+protocol SignInViewControllerDelegate: AnyObject {
+    func signInViewControllerDidSignIn(_ viewController: SignInViewController)
+}
+
 class SignInViewController: UIViewController {
 
     static let identifier = "SignInViewController"
@@ -17,7 +21,7 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     
     private let spinner = JGProgressHUD(style: .dark)
-    var delegate: DismissWelcomeController?
+    weak var delegate: SignInViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +54,7 @@ class SignInViewController: UIViewController {
             }
             
             UserDefaults.standard.set(email, forKey: "email")
-            strongSelf.delegate?.dismissController()
+            strongSelf.navigationController?.dismiss(animated: true)
         }
     }
 }

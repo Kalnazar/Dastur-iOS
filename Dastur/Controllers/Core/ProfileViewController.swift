@@ -94,12 +94,12 @@ class ProfileViewController: UIViewController {
             guard let strongSelf = self else {
                 return
             }
+            UserDefaults.standard.removeObject(forKey: "userEmailKey")
+            UserDefaults.standard.removeObject(forKey: "userNameKey")
             do {
                 try FirebaseAuth.Auth.auth().signOut()
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let welcomeScreen = storyboard.instantiateViewController(withIdentifier: WelcomeViewController.identifier) as! WelcomeViewController
-                welcomeScreen.modalTransitionStyle = .crossDissolve
-                welcomeScreen.modalPresentationStyle = .overFullScreen
+                let welcomeScreen = strongSelf.storyboard?.instantiateViewController(withIdentifier: "WelcomNavigationController") as! UINavigationController
+                welcomeScreen.modalPresentationStyle = .fullScreen
                 strongSelf.present(welcomeScreen, animated: true)
             } catch {
                 print("Failed to log out")
