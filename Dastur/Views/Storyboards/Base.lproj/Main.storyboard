@@ -352,7 +352,7 @@
                                 <rect key="frame" x="46.666666666666657" y="260.66666666666663" width="300" height="330.66666666666663"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gTz-7c-BZh">
-                                        <rect key="frame" x="80.333333333333343" y="0.0" width="139" height="50.666666666666664"/>
+                                        <rect key="frame" x="80.333333333333343" y="0.0" width="139.00000000000003" height="50.666666666666664"/>
                                         <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="36"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -484,7 +484,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="dwI-XA-qgS">
-                                <rect key="frame" x="16" y="247.33333333333334" width="189.66666666666666" height="62.666666666666657"/>
+                                <rect key="frame" x="16" y="247.33333333333334" width="300.33333333333331" height="62.666666666666657"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tradition Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zzR-Ff-GTI">
                                         <rect key="frame" x="0.0" y="0.0" width="189.66666666666666" height="33.666666666666664"/>
@@ -500,11 +500,26 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ftV-VT-FlU">
+                                <rect key="frame" x="326.33333333333331" y="261.66666666666669" width="50.666666666666686" height="34.333333333333314"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="xbT-Dg-XeD"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemGray6Color"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system">
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="likePressed:" destination="vKw-Sf-ONl" eventType="touchUpInside" id="fVx-Ul-VVT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3Ka-0u-sGn"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="bar-fu-1iM" firstAttribute="leading" secondItem="3Ka-0u-sGn" secondAttribute="leading" id="0JQ-Qd-sXw"/>
+                            <constraint firstItem="ftV-VT-FlU" firstAttribute="leading" secondItem="dwI-XA-qgS" secondAttribute="trailing" constant="10" id="8gg-dH-0cv"/>
                             <constraint firstItem="dwI-XA-qgS" firstAttribute="leading" secondItem="3Ka-0u-sGn" secondAttribute="leading" constant="16" id="S9z-a4-Ne3"/>
                             <constraint firstItem="bar-fu-1iM" firstAttribute="top" secondItem="dwI-XA-qgS" secondAttribute="bottom" constant="19" id="TSB-iw-eDR"/>
                             <constraint firstItem="wlV-fG-bgD" firstAttribute="trailing" secondItem="3Ka-0u-sGn" secondAttribute="trailing" id="YBo-jr-YmP"/>
@@ -514,10 +529,18 @@
                             <constraint firstItem="3Ka-0u-sGn" firstAttribute="trailing" secondItem="Aiy-fF-S8F" secondAttribute="trailing" constant="40" id="kjr-JH-0gA"/>
                             <constraint firstItem="bar-fu-1iM" firstAttribute="top" secondItem="3Ka-0u-sGn" secondAttribute="top" constant="270" id="koi-tG-ySJ"/>
                             <constraint firstItem="wlV-fG-bgD" firstAttribute="leading" secondItem="3Ka-0u-sGn" secondAttribute="leading" id="lqU-4o-PJT"/>
+                            <constraint firstItem="3Ka-0u-sGn" firstAttribute="trailing" secondItem="ftV-VT-FlU" secondAttribute="trailing" constant="16" id="mW1-Ru-ggW"/>
+                            <constraint firstItem="ftV-VT-FlU" firstAttribute="centerY" secondItem="dwI-XA-qgS" secondAttribute="centerY" id="pEc-yT-ENz"/>
                             <constraint firstItem="wlV-fG-bgD" firstAttribute="top" secondItem="Bix-yj-cqb" secondAttribute="top" id="pHS-Kw-eG9"/>
                             <constraint firstItem="Aiy-fF-S8F" firstAttribute="bottom" secondItem="3Ka-0u-sGn" secondAttribute="bottom" id="yCc-Be-9Mj"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="wlV-fG-bgD" id="cxU-wE-Pla"/>
+                        <outlet property="likeButton" destination="ftV-VT-FlU" id="q34-LA-n2A"/>
+                        <outlet property="name" destination="zzR-Ff-GTI" id="8Bd-g7-ZXN"/>
+                        <outlet property="rating" destination="bVd-yz-4hn" id="Hvh-TZ-qoY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ove-LS-rAH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -988,6 +1011,9 @@
         </systemColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -59,6 +59,7 @@ final class StorageManager {
     func downloadImage(imageView: UIImageView, url: URL) {
         URLSession.shared.dataTask(with: url, completionHandler: { data, _, error in
             guard let data = data, error == nil else {
+                imageView.image = UIImage(named: "default")
                 return
             }
             DispatchQueue.main.async {

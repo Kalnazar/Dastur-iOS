@@ -50,8 +50,17 @@ class TitleCollectionViewCell: UICollectionViewCell {
         ])
     }
     
-    public func configure(with image: String) {
-        imageView.image = UIImage(named: "default")
+    public func configure(image: String, name: String) {
+        let path = "traditions/" + image
+        StorageManager.shared.downloadURL(for: path) { [weak self] result in
+            switch result {
+            case .success(let url):
+                StorageManager.shared.downloadImage(imageView: self!.imageView, url: url)
+            case .failure(let error):
+                print("Failed to get download url: \(error)")
+            }
+        }
+        nameLabel.text = name
     }
     
     required init?(coder: NSCoder) {

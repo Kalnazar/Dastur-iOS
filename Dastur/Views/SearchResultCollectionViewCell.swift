@@ -59,6 +59,7 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
             case .success(let url):
                 StorageManager.shared.downloadImage(imageView: self!.traditionImageView, url: url)
             case .failure(let error):
+                self!.traditionImageView.image = UIImage(named: "default")
                 print("Failed to get download url: \(error)")
             }
         }

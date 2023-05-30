@@ -64,7 +64,7 @@ extension CollectionViewTableViewCell: UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TitleCollectionViewCell.identifier, for: indexPath) as? TitleCollectionViewCell else {return UICollectionViewCell()}
-        cell.configure(with: "")
+        cell.configure(image: traditions[indexPath.row]["image_name"]!, name: traditions[indexPath.row]["name"]!)
         return cell
     }
     
