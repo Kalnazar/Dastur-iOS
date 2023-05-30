@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import FirebaseDatabase
+import Firebase
 
 final class DatabaseManager {
     
@@ -44,9 +44,7 @@ extension DatabaseManager {
     /// - Parameter user: (username, email)
     public func insertUser(with user: User, completion: @escaping (Bool) -> Void) {
         self.database.child("users").observeSingleEvent(of: .value, with: { [weak self] snapshot in
-            guard let strongSelf = self else {
-                return
-            }
+            guard let strongSelf = self else { return }
             if var usersCollection = snapshot.value as? [[String: String]] {
                 // append to user dictionary
                 let newElement = [
@@ -77,6 +75,34 @@ extension DatabaseManager {
                     completion(true)
                 })
             }
+        })
+    }
+    
+    public func addToFavourites(id: String) {
+        let uid = Auth.auth().currentUser?.uid
+        
+        database.child("favourites").child(uid!).observeSingleEvent(of: .value, with: { [weak self] snapshot in
+            guard let strongSelf = self else { return }
+            if var favourites = snapshot.value as? [[String: String]] {
+                for favourite in favourites {
+                    guard favourite["traditionID"] != id else {
+                        print("Tradition already in favourites")
+                        return
+                    }
+                }
+                let newFavourite: [String: String] = [
+                    "traditionID": id
+                ]
+                favourites.append(newFavourite)
+                print(favourites)
+                strongSelf.database.child("favourites").child(uid!).setValue(favourites)
+            } else {
+                let newFavourite: [String: String] = [
+                    "traditionID": id
+                ]
+                strongSelf.database.child("favourites").child(uid!).child("favourites").setValue(newFavourite)
+            }
+
         })
     }
     

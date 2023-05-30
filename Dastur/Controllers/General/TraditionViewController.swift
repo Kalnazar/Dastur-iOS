@@ -57,6 +57,7 @@ class TraditionViewController: UIViewController {
     @IBAction func likePressed(_ sender: UIButton) {
         isLiked.toggle()
         likeButton.isSelected = isLiked
+        DatabaseManager.shared.addToFavourites(id: nameLabel.text!)
     }
     
     private func setUpView() {

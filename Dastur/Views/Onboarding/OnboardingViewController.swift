@@ -67,11 +67,7 @@ extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDa
 extension OnboardingViewController: DelegatePageControl {
     func moveToController() {
         Core.shared.setIsNotNewUser()
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let welcomeScreen = storyboard.instantiateViewController(withIdentifier: WelcomeViewController.identifier) as! WelcomeViewController
-        welcomeScreen.modalTransitionStyle = .crossDissolve
-        welcomeScreen.modalPresentationStyle = .overFullScreen
-        present(welcomeScreen, animated: true)
+        dismiss(animated: true)
     }
     
     func scrollToItem(indexPath: IndexPath) {
