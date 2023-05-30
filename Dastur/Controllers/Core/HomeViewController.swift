@@ -139,10 +139,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension HomeViewController: CustomCellDelegate {
     
-    func didSelectItemAtIndex(indexPath: IndexPath) {
+    func didSelectItemAtIndex(tradition: TraditionModel) {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: TraditionViewController.identifier) as? TraditionViewController else {
             return
         }
+        vc.configure(tradition)
         vc.modalPresentationStyle = .formSheet
         present(vc, animated: true)
     }

@@ -13,9 +13,9 @@ class TraditionViewController: UIViewController {
     private var isLiked = false
     
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var rating: UILabel!
-    
+    @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var likeButton: UIButton!
     
     private var gradientLayer: CAGradientLayer = {
@@ -30,8 +30,23 @@ class TraditionViewController: UIViewController {
         setUpView()
     }
     
-    public func configure(name: String) {
-        self.name.text = name
+    public func configure(_ tradition: TraditionModel) {
+        DispatchQueue.main.async { [weak self] in
+            guard let strongSelf = self else { return }
+            let path = "traditions/" + tradition.imageName
+            StorageManager.shared.downloadURL(for: path) { result in
+                switch result {
+                case .success(let url):
+                    StorageManager.shared.downloadImage(imageView: strongSelf.imageView, url: url)
+                case .failure(let error):
+                    strongSelf.imageView.image = UIImage(named: "culture")
+                    print("Failed: \(error)")
+                }
+            }
+            strongSelf.nameLabel.text = tradition.name
+            strongSelf.rating.text = "Rating \(tradition.rating)"
+            strongSelf.descriptionTextView.text = tradition.description
+        }
     }
     
     override func viewDidLayoutSubviews() {

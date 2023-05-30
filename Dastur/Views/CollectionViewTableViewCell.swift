@@ -8,7 +8,7 @@
 import UIKit
 
 protocol CustomCellDelegate: AnyObject {
-    func didSelectItemAtIndex(indexPath: IndexPath)
+    func didSelectItemAtIndex(tradition: TraditionModel)
 }
 
 class CollectionViewTableViewCell: UITableViewCell {
@@ -59,7 +59,8 @@ extension CollectionViewTableViewCell: UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        delegate?.didSelectItemAtIndex(indexPath: indexPath)
+        let tradition = traditions[indexPath.row]
+        delegate?.didSelectItemAtIndex(tradition: TraditionModel(name: tradition["name"]!, imageName: tradition["image_name"]!, description: tradition["description"]!, rating: tradition["rating"]!, type: tradition["typeId"]!))
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

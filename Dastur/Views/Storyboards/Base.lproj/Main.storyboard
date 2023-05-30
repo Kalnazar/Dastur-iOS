@@ -466,7 +466,7 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <color key="textColor" systemColor="labelColor"/>
-                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
@@ -536,9 +536,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="descriptionTextView" destination="2Ah-Yb-wTg" id="0t4-73-fFw"/>
                         <outlet property="imageView" destination="wlV-fG-bgD" id="cxU-wE-Pla"/>
                         <outlet property="likeButton" destination="ftV-VT-FlU" id="q34-LA-n2A"/>
-                        <outlet property="name" destination="zzR-Ff-GTI" id="8Bd-g7-ZXN"/>
+                        <outlet property="nameLabel" destination="zzR-Ff-GTI" id="TvQ-rU-yxt"/>
                         <outlet property="rating" destination="bVd-yz-4hn" id="Hvh-TZ-qoY"/>
                     </connections>
                 </viewController>
