@@ -52,6 +52,7 @@
 		1AE312172A25F9F700802DD4 /* HomeHeaderUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE312162A25F9F700802DD4 /* HomeHeaderUIView.swift */; };
 		1AE312192A25FACB00802DD4 /* CollectionViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE312182A25FACB00802DD4 /* CollectionViewTableViewCell.swift */; };
 		1AE3121B2A25FB3700802DD4 /* TitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE3121A2A25FB3700802DD4 /* TitleCollectionViewCell.swift */; };
+		1AE3121D2A262C4000802DD4 /* TraditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE3121C2A262C4000802DD4 /* TraditionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +95,7 @@
 		1AE312162A25F9F700802DD4 /* HomeHeaderUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderUIView.swift; sourceTree = "<group>"; };
 		1AE312182A25FACB00802DD4 /* CollectionViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewTableViewCell.swift; sourceTree = "<group>"; };
 		1AE3121A2A25FB3700802DD4 /* TitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCollectionViewCell.swift; sourceTree = "<group>"; };
+		1AE3121C2A262C4000802DD4 /* TraditionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraditionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +237,7 @@
 			children = (
 				1ADBBA9B2A1D20C900513AF7 /* MainTabBarViewController.swift */,
 				1A89B5B52A222EF600B4E13B /* SearchResultsViewController.swift */,
+				1AE3121C2A262C4000802DD4 /* TraditionViewController.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				1ADBBA792A1CFD1B00513AF7 /* Core.swift in Sources */,
 				1ADBBA922A1D14DD00513AF7 /* HomeViewController.swift in Sources */,
 				1A9D735F2A1FD8EE008FBB6F /* User.swift in Sources */,
+				1AE3121D2A262C4000802DD4 /* TraditionViewController.swift in Sources */,
 				1ADBBA962A1D153D00513AF7 /* FavoritesViewController.swift in Sources */,
 				1ADBBA9A2A1D159C00513AF7 /* SearchViewController.swift in Sources */,
 				1A9346F62A1CADD700FE0F2B /* WelcomeViewController.swift in Sources */,

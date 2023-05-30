@@ -140,30 +140,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 extension HomeViewController: CustomCellDelegate {
     
     func didSelectItemAtIndex(indexPath: IndexPath) {
-        //        let vc = storyboard?.instantiateViewController(identifier: TitlePreviewViewController.identifier) as! TitlePreviewViewController
-        //        navigationController?.pushViewController(vc, animated: true)
-        print("Hello world")
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: TraditionViewController.identifier) as? TraditionViewController else {
+            return
+        }
+        vc.modalPresentationStyle = .formSheet
+        present(vc, animated: true)
     }
     
 }
-
-    /*
-    private func getTypes() {
-        spinner.show(in: view)
-        DatabaseManager.shared.getAllData(from: "types", completion: { [weak self] result in
-            guard let strongSelf = self else {
-                return
-            }
-            switch result {
-            case .success(let types):
-                DispatchQueue.main.async {
-                    strongSelf.types = types
-                    strongSelf.typesFetched = true
-                    strongSelf.collectionView.reloadData()
-                    strongSelf.spinner.dismiss()
-                }
-            case .failure(let error):
-                print("Failed to get data: \(error)")
-            }
-        })
-    }*/
