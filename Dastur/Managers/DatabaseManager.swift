@@ -90,6 +90,22 @@ extension DatabaseManager {
         })
     }
     
+    public func getDataOfType(id: String, completion: @escaping (Result<[[String: String]], Error>) -> Void) {
+        database.child("traditions").observeSingleEvent(of: .value, with: { snapshot in
+            guard let collection = snapshot.value as? [[String: String]] else {
+                completion(.failure(DatabaseError.failedToFetch))
+                return
+            }
+            var traditions = [[String: String]]()
+            for tradition in collection {
+                if tradition["typeId"] == id {
+                    traditions.append(tradition)
+                }
+            }
+            completion(.success(traditions))
+        })
+    }
+    
     public enum DatabaseError: Error {
         case failedToFetch
     }

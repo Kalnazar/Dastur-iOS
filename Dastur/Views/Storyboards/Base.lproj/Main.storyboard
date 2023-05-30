@@ -436,13 +436,11 @@
                         <viewLayoutGuide key="safeArea" id="47e-TS-Jzk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="house" catalog="system" selectedImage="house" id="TRs-1I-ahJ">
-                        <color key="badgeColor" systemColor="labelColor"/>
-                    </tabBarItem>
+                    <navigationItem key="navigationItem" id="eOG-sW-ruj"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aCx-lJ-Edc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4231.2977099236641" y="-2.1126760563380285"/>
+            <point key="canvasLocation" x="4234" y="711"/>
         </scene>
         <!--Main Tab Bar View Controller-->
         <scene sceneID="K0d-P6-EvC">
@@ -455,7 +453,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="qUe-ga-fas" kind="relationship" relationship="viewControllers" id="8Gi-Zk-aIk"/>
+                        <segue destination="b6f-Az-xNS" kind="relationship" relationship="viewControllers" id="8Gi-Zk-aIk"/>
                         <segue destination="NO0-Fm-jIa" kind="relationship" relationship="viewControllers" id="STO-9f-Vc6"/>
                         <segue destination="TFl-Wc-ssy" kind="relationship" relationship="viewControllers" id="8GS-BV-h4H"/>
                         <segue destination="pqr-eF-iIA" kind="relationship" relationship="viewControllers" id="VkY-G7-hQm"/>
@@ -514,8 +512,12 @@
                                                         </label>
                                                     </subviews>
                                                     <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="Nt7-Jq-22L" secondAttribute="trailing" id="J5u-Bv-fAA"/>
+                                                        <constraint firstAttribute="bottom" secondItem="hwr-Kt-j5I" secondAttribute="bottom" id="LHy-De-lqg"/>
+                                                        <constraint firstItem="hwr-Kt-j5I" firstAttribute="leading" secondItem="RcV-kd-EL0" secondAttribute="leading" id="Mc5-eS-W4T"/>
                                                         <constraint firstItem="Nt7-Jq-22L" firstAttribute="leading" secondItem="RcV-kd-EL0" secondAttribute="leading" id="OwD-9I-eJw"/>
-                                                        <constraint firstItem="hwr-Kt-j5I" firstAttribute="leading" secondItem="RcV-kd-EL0" secondAttribute="leading" id="PIt-zC-37t"/>
+                                                        <constraint firstItem="Nt7-Jq-22L" firstAttribute="top" secondItem="RcV-kd-EL0" secondAttribute="top" id="b5H-Zr-5rf"/>
+                                                        <constraint firstItem="hwr-Kt-j5I" firstAttribute="top" secondItem="Nt7-Jq-22L" secondAttribute="bottom" constant="3" id="emg-hF-UIm"/>
                                                     </constraints>
                                                 </stackView>
                                             </subviews>
@@ -836,6 +838,27 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C2w-Sn-io0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="195" y="-2"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="O3T-Eu-Rqm">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="b6f-Az-xNS" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="house" catalog="system" selectedImage="house" id="TRs-1I-ahJ">
+                        <color key="badgeColor" systemColor="labelColor"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SgB-Rr-B7a">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="qUe-ga-fas" kind="relationship" relationship="rootViewController" id="uKh-f3-SLT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kYp-zh-fdt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4234" y="-2"/>
         </scene>
     </scenes>
     <resources>
