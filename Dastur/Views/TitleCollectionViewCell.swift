@@ -23,7 +23,7 @@ class TitleCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.textAlignment = .center
         label.font = UIFont(name: "Poppins-Medium", size: 16)
-        label.textColor = .black
+        label.textColor = .label
         label.text = "Check"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

@@ -21,7 +21,7 @@ class TraditionViewController: UIViewController {
     @IBOutlet weak var rating: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var likeButton: UIButton!
-    
+    @IBOutlet weak var viewDetail: UIView!
     private var traditionId: String?
     
     private var gradientLayer: CAGradientLayer = {
@@ -93,5 +93,6 @@ class TraditionViewController: UIViewController {
     private func setUpView() {
         imageView.layer.addSublayer(gradientLayer)
         likeButton.tintColor = .clear
+        viewDetail.backgroundColor = .systemBackground
     }
 }

@@ -7,6 +7,11 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
@@ -16,19 +21,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="JmY-TB-FAH">
-                                <rect key="frame" x="86.666666666666686" y="316" width="220" height="220"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="220" id="S8F-GK-vk4"/>
-                                    <constraint firstAttribute="width" constant="220" id="XHj-ic-mq0"/>
-                                </constraints>
-                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DASTUR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vu7-SJ-6TO">
+                                <rect key="frame" x="97.666666666666686" y="391" width="198" height="70"/>
+                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="JmY-TB-FAH" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="DmZ-fh-P2E"/>
-                            <constraint firstItem="JmY-TB-FAH" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="fPc-Z7-2Z0"/>
+                            <constraint firstItem="vu7-SJ-6TO" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Hvk-7h-Ztc"/>
+                            <constraint firstItem="vu7-SJ-6TO" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="mZl-Bf-DxH"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -38,7 +42,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo" width="383" height="383"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

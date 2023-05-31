@@ -89,7 +89,7 @@ extension FavoritesViewController: UICollectionViewDelegate, UICollectionViewDat
         if let cell = collectionView.cellForItem(at: indexPath) {
             cell.contentView.backgroundColor = UIColor(named: "AppClicked")
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
                 guard let strongSelf = self else { return }
                 guard let vc = strongSelf.storyboard?.instantiateViewController(withIdentifier: TraditionViewController.identifier) as? TraditionViewController else {
                     return
