@@ -16,7 +16,7 @@ class SearchResultsViewController: UIViewController {
     public let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(SearchResultCollectionViewCell.self, forCellWithReuseIdentifier: SearchResultCollectionViewCell.identifier)
+        collectionView.register(TraditionCardCollectionViewCell.self, forCellWithReuseIdentifier: TraditionCardCollectionViewCell.identifier)
         return collectionView
     }()
     
@@ -47,7 +47,7 @@ extension SearchResultsViewController: UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchResultCollectionViewCell.identifier, for: indexPath) as? SearchResultCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TraditionCardCollectionViewCell.identifier, for: indexPath) as? TraditionCardCollectionViewCell else {
             return UICollectionViewCell()
         }
         let result = results[indexPath.row]

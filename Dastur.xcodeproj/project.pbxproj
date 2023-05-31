@@ -21,7 +21,7 @@
 		1A61CA092A20D5DC004D4D73 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 1A61CA082A20D5DC004D4D73 /* JGProgressHUD */; };
 		1A61CA0B2A20DF6E004D4D73 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A61CA0A2A20DF6E004D4D73 /* StorageManager.swift */; };
 		1A89B5B62A222EF600B4E13B /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A89B5B52A222EF600B4E13B /* SearchResultsViewController.swift */; };
-		1A89B5B82A22419400B4E13B /* SearchResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A89B5B72A22419400B4E13B /* SearchResultCollectionViewCell.swift */; };
+		1A89B5B82A22419400B4E13B /* TraditionCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A89B5B72A22419400B4E13B /* TraditionCardCollectionViewCell.swift */; };
 		1A9346E92A1C98E400FE0F2B /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9346E82A1C98E400FE0F2B /* OnboardingViewController.swift */; };
 		1A9346EE2A1C9C2600FE0F2B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9346ED2A1C9C2600FE0F2B /* Extensions.swift */; };
 		1A9346F02A1C9CC300FE0F2B /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9346EF2A1C9CC300FE0F2B /* OnboardingSlide.swift */; };
@@ -69,7 +69,7 @@
 		1A4BDD712A24C0DD0052430B /* TraditionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraditionViewModel.swift; sourceTree = "<group>"; };
 		1A61CA0A2A20DF6E004D4D73 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		1A89B5B52A222EF600B4E13B /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
-		1A89B5B72A22419400B4E13B /* SearchResultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCollectionViewCell.swift; sourceTree = "<group>"; };
+		1A89B5B72A22419400B4E13B /* TraditionCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraditionCardCollectionViewCell.swift; sourceTree = "<group>"; };
 		1A9346E82A1C98E400FE0F2B /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		1A9346ED2A1C9C2600FE0F2B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		1A9346EF2A1C9CC300FE0F2B /* OnboardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlide.swift; sourceTree = "<group>"; };
@@ -183,9 +183,9 @@
 				1AE3121A2A25FB3700802DD4 /* TitleCollectionViewCell.swift */,
 				1AE312182A25FACB00802DD4 /* CollectionViewTableViewCell.swift */,
 				1AE312162A25F9F700802DD4 /* HomeHeaderUIView.swift */,
-				1A89B5B72A22419400B4E13B /* SearchResultCollectionViewCell.swift */,
-				1A49C1C12A21F1EA00AEA785 /* CategoryCollectionViewCell.swift */,
 				1A49C1BF2A21E66400AEA785 /* FavoriteCollectionViewCell.swift */,
+				1A49C1C12A21F1EA00AEA785 /* CategoryCollectionViewCell.swift */,
+				1A825FA32A27294C005C74AA /* General */,
 				1A9346E72A1C98C600FE0F2B /* Onboarding */,
 				1A22E18E2A1B7CFD0068EE92 /* Storyboards */,
 			);
@@ -238,6 +238,14 @@
 				1ADBBA9B2A1D20C900513AF7 /* MainTabBarViewController.swift */,
 				1A89B5B52A222EF600B4E13B /* SearchResultsViewController.swift */,
 				1AE3121C2A262C4000802DD4 /* TraditionViewController.swift */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		1A825FA32A27294C005C74AA /* General */ = {
+			isa = PBXGroup;
+			children = (
+				1A89B5B72A22419400B4E13B /* TraditionCardCollectionViewCell.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -410,7 +418,7 @@
 				1A4BDD722A24C0DD0052430B /* TraditionViewModel.swift in Sources */,
 				1AE312172A25F9F700802DD4 /* HomeHeaderUIView.swift in Sources */,
 				1ADBBA9C2A1D20C900513AF7 /* MainTabBarViewController.swift in Sources */,
-				1A89B5B82A22419400B4E13B /* SearchResultCollectionViewCell.swift in Sources */,
+				1A89B5B82A22419400B4E13B /* TraditionCardCollectionViewCell.swift in Sources */,
 				1ADBBA8C2A1D0F0600513AF7 /* Service.swift in Sources */,
 				1AE3121B2A25FB3700802DD4 /* TitleCollectionViewCell.swift in Sources */,
 				1ADBBA792A1CFD1B00513AF7 /* Core.swift in Sources */,

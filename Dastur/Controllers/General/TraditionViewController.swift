@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class TraditionViewController: UIViewController {
     
@@ -18,6 +19,8 @@ class TraditionViewController: UIViewController {
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var likeButton: UIButton!
     
+    private var traditionId: String?
+    
     private var gradientLayer: CAGradientLayer = {
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
@@ -28,6 +31,7 @@ class TraditionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
+        checkIfLiked()
     }
     
     public func configure(_ tradition: TraditionModel) {
@@ -46,6 +50,7 @@ class TraditionViewController: UIViewController {
             strongSelf.nameLabel.text = tradition.name
             strongSelf.rating.text = "Rating \(tradition.rating)"
             strongSelf.descriptionTextView.text = tradition.description
+            strongSelf.traditionId = tradition.name
         }
     }
     
@@ -57,14 +62,33 @@ class TraditionViewController: UIViewController {
     @IBAction func likePressed(_ sender: UIButton) {
         isLiked.toggle()
         likeButton.isSelected = isLiked
-        DatabaseManager.shared.addToFavourites(id: nameLabel.text!)
+        likeButton.setImage(UIImage(systemName: isLiked ? "heart.fill" : "heart"), for: .normal)
+        
+        if isLiked {
+            DatabaseManager.shared.addToFavourites(id: traditionId!)
+        } else {
+            DatabaseManager.shared.removeFromFavourites(id: traditionId!)
+        }
+    }
+    
+    private func checkIfLiked() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        Database.database().reference().child("favourites").child(uid).observeSingleEvent(of: .value, with: { [weak self] snapshot in
+            guard let strongSelf = self else { return }
+            if let favourites = snapshot.value as? [String] {
+                let traditionId = strongSelf.traditionId
+                if favourites.contains(traditionId!) {
+                    print("Liked")
+                    strongSelf.isLiked = true
+                    strongSelf.likeButton.isSelected = true
+                    strongSelf.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                }
+            }
+        })
     }
     
     private func setUpView() {
         imageView.layer.addSublayer(gradientLayer)
-        
-        likeButton.setImage(UIImage(systemName: "heart")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        likeButton.setImage(UIImage(systemName: "heart.fill")?.withRenderingMode(.alwaysTemplate), for: .selected)
         likeButton.tintColor = .clear
     }
 }

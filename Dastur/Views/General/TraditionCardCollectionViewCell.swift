@@ -7,9 +7,9 @@
 
 import UIKit
 
-class SearchResultCollectionViewCell: UICollectionViewCell {
+class TraditionCardCollectionViewCell: UICollectionViewCell {
     
-    static let identifier = "SearchResultCollectionViewCell"
+    static let identifier = "TraditionCardCollectionViewCell"
     
     private let traditionImageView: UIImageView = {
         let image = UIImageView()
@@ -46,8 +46,8 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
         return stackView
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override func layoutSubviews() {
+        super.layoutSubviews()
         setupViews()
         setupConstraints()
     }
@@ -94,9 +94,5 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate(labelsStackViewConstraints)
         traditionName.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         ratingLabel.setContentHuggingPriority(.defaultLow, for: .horizontal)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }

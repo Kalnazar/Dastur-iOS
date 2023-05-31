@@ -25,9 +25,9 @@ class Service {
     
     static func uploadToDatabase(email: String, username: String, onSuccess: @escaping () -> Void) {
         let ref = Database.database().reference()
-        let uid = Auth.auth().currentUser?.uid
+        guard let uid = Auth.auth().currentUser?.uid else { return }
         
-        ref.child("users").child(uid!).setValue(["email" : email, "username": username])
+        ref.child("users").child(uid).setValue(["email" : email, "username": username])
         onSuccess()
     }
     

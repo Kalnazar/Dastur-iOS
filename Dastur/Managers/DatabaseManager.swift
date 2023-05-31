@@ -19,6 +19,10 @@ final class DatabaseManager {
         safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
         return safeEmail
     }
+    
+    public enum DatabaseError: Error {
+        case failedToFetch
+    }
 }
 
 // MARK: - Account Management
@@ -38,72 +42,6 @@ extension DatabaseManager {
             }
             completion(true)
         }
-    }
-    
-    /// Inserts new user to database
-    /// - Parameter user: (username, email)
-    public func insertUser(with user: User, completion: @escaping (Bool) -> Void) {
-        self.database.child("users").observeSingleEvent(of: .value, with: { [weak self] snapshot in
-            guard let strongSelf = self else { return }
-            if var usersCollection = snapshot.value as? [[String: String]] {
-                // append to user dictionary
-                let newElement = [
-                    "username": user.username,
-                    "email": user.safeEmail
-                ]
-                usersCollection.append(newElement)
-                strongSelf.database.child("users").setValue(usersCollection, withCompletionBlock: { error, _ in
-                    guard error == nil else {
-                        completion(false)
-                        return
-                    }
-                    completion(true)
-                })
-            } else {
-                // create that array
-                let newCollection: [[String: String]] = [
-                    [
-                        "username": user.username,
-                        "email": user.safeEmail
-                    ]
-                ]
-                strongSelf.database.child("users").setValue(newCollection, withCompletionBlock: { error, _ in
-                    guard error == nil else {
-                        completion(false)
-                        return
-                    }
-                    completion(true)
-                })
-            }
-        })
-    }
-    
-    public func addToFavourites(id: String) {
-        let uid = Auth.auth().currentUser?.uid
-        
-        database.child("favourites").child(uid!).observeSingleEvent(of: .value, with: { [weak self] snapshot in
-            guard let strongSelf = self else { return }
-            if var favourites = snapshot.value as? [[String: String]] {
-                for favourite in favourites {
-                    guard favourite["traditionID"] != id else {
-                        print("Tradition already in favourites")
-                        return
-                    }
-                }
-                let newFavourite: [String: String] = [
-                    "traditionID": id
-                ]
-                favourites.append(newFavourite)
-                print(favourites)
-                strongSelf.database.child("favourites").child(uid!).setValue(favourites)
-            } else {
-                let newFavourite: [String: String] = [
-                    "traditionID": id
-                ]
-                strongSelf.database.child("favourites").child(uid!).child("favourites").setValue(newFavourite)
-            }
-
-        })
     }
     
     public func getAllData(from collection: String, completion: @escaping (Result<[[String: String]], Error>) -> Void) {
@@ -131,8 +69,82 @@ extension DatabaseManager {
             completion(.success(traditions))
         })
     }
-    
-    public enum DatabaseError: Error {
-        case failedToFetch
+}
+
+// MARK: - Favourites management
+
+extension DatabaseManager {
+    public func addToFavourites(id: String) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        database.child("favourites").child(uid).observeSingleEvent(of: .value, with: { [weak self] snapshot in
+            guard let strongSelf = self else { return }
+            if var favourites = snapshot.value as? [String] {
+                if favourites.contains(id) {
+                    print("Tradition already in favourites")
+                    return
+                }
+                favourites.append(id)
+                strongSelf.database.child("favourites").child(uid).setValue(favourites)
+            } else {
+                let favourites = [id]
+                strongSelf.database.child("favourites").child(uid).setValue(favourites)
+            }
+        })
     }
+    
+    public func removeFromFavourites(id: String) {
+        guard let uid = Auth.auth().currentUser?.uid else {
+            return
+        }
+        
+        database.child("favourites").child(uid).observeSingleEvent(of: .value) { [weak self] snapshot in
+            guard let strongSelf = self else { return }
+            
+            if var favourites = snapshot.value as? [String] {
+                if let index = favourites.firstIndex(of: id) {
+                    favourites.remove(at: index)
+                    strongSelf.database.child("favourites").child(uid).setValue(favourites)
+                } else {
+                    print("Tradition not found in favourites")
+                }
+            } else {
+                print("No favourites found")
+            }
+        }
+    }
+    
+    public func getTraditionsForFavorites(completion: @escaping (Result<[[String: String]], Error>) -> Void) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        // Fetch the user's favorites
+        database.child("favourites").child(uid).observeSingleEvent(of: .value) { [weak self] snapshot in
+            guard let strongSelf = self else { return }
+            
+            guard let favorites = snapshot.value as? [String] else {
+                completion(.success([]))
+                return
+            }
+            
+            var traditions = [[String: String]]()
+            let dispatchGroup = DispatchGroup()
+            
+            for traditionId in favorites {
+                dispatchGroup.enter()
+                strongSelf.database.child("traditions").observeSingleEvent(of: .value) { snapshot in
+                    guard let traditionsCollection = snapshot.value as? [[String: String]] else { return }
+                    for tradition in traditionsCollection {
+                        if tradition["name"] == traditionId {
+                            traditions.append(tradition)
+                        }
+                    }
+                    dispatchGroup.leave()
+                }
+            }
+            dispatchGroup.notify(queue: .main) {
+                completion(.success(traditions))
+            }
+        }
+    }
+
 }

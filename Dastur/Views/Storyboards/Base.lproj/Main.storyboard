@@ -352,7 +352,7 @@
                                 <rect key="frame" x="46.666666666666657" y="260.66666666666663" width="300" height="330.66666666666663"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gTz-7c-BZh">
-                                        <rect key="frame" x="80.333333333333343" y="0.0" width="139.00000000000003" height="50.666666666666664"/>
+                                        <rect key="frame" x="80.333333333333343" y="0.0" width="139" height="50.666666666666664"/>
                                         <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="36"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -617,16 +617,19 @@
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="RcV-kd-EL0">
-                                                    <rect key="frame" x="110" y="53.333333333333343" width="114" height="42.666666666666657"/>
+                                                    <rect key="frame" x="110" y="52" width="114" height="45"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tradition type" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nt7-Jq-22L">
-                                                            <rect key="frame" x="0.0" y="0.0" width="114" height="22.666666666666668"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="114" height="25"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="25" id="IOv-dm-jue"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 Traditions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hwr-Kt-j5I">
-                                                            <rect key="frame" x="0.0" y="25.666666666666664" width="74" height="17"/>
+                                                            <rect key="frame" x="0.0" y="28" width="74" height="17"/>
                                                             <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="12"/>
                                                             <color key="textColor" name="AppGray"/>
                                                             <nil key="highlightedColor"/>
@@ -702,40 +705,12 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FavoriteCollectionViewCell" id="opY-jn-rYB" customClass="FavoriteCollectionViewCell" customModule="Dastur" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TraditionCardCollectionViewCell" id="opY-jn-rYB" customClass="TraditionCardCollectionViewCell" customModule="Dastur" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="220"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Fye-3E-YWL">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="220"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="oyQ-Te-LoK">
-                                                    <rect key="frame" x="0.0" y="0.0" width="393" height="175"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="175" id="TLG-eb-cj5"/>
-                                                        <constraint firstAttribute="width" constant="330" id="c6H-1R-gQu"/>
-                                                    </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="10"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tradition name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MFV-8H-agZ">
-                                                    <rect key="frame" x="134" y="183" width="125.33333333333331" height="27"/>
-                                                    <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="oyQ-Te-LoK" firstAttribute="top" secondItem="Fye-3E-YWL" secondAttribute="top" id="4bt-al-ci4"/>
-                                                <constraint firstItem="MFV-8H-agZ" firstAttribute="top" secondItem="oyQ-Te-LoK" secondAttribute="bottom" constant="8" symbolic="YES" id="88q-lJ-sHm"/>
-                                                <constraint firstItem="MFV-8H-agZ" firstAttribute="centerX" secondItem="Fye-3E-YWL" secondAttribute="centerX" id="G5z-gQ-zcz"/>
-                                                <constraint firstAttribute="bottom" secondItem="MFV-8H-agZ" secondAttribute="bottom" constant="10" id="YLn-Wg-W7r"/>
-                                                <constraint firstItem="oyQ-Te-LoK" firstAttribute="leading" secondItem="Fye-3E-YWL" secondAttribute="leading" id="hXW-Rz-eNZ"/>
-                                                <constraint firstAttribute="trailing" secondItem="oyQ-Te-LoK" secondAttribute="trailing" id="tiu-GK-MBZ"/>
-                                            </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="393" height="220"/>
                                         <userDefinedRuntimeAttributes>
@@ -743,10 +718,6 @@
                                                 <real key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <outlet property="traditionImageView" destination="oyQ-Te-LoK" id="gu0-su-yo7"/>
-                                            <outlet property="traditionName" destination="MFV-8H-agZ" id="WiQ-GS-n6i"/>
-                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -986,7 +957,6 @@
         <image name="arrow.right" catalog="system" width="128" height="95"/>
         <image name="auth-bg" width="1500" height="3248"/>
         <image name="culture" width="900" height="600"/>
-        <image name="default" width="926" height="685"/>
         <image name="doc.text.magnifyingglass" catalog="system" width="110" height="128"/>
         <image name="heart" catalog="system" width="128" height="107"/>
         <image name="house" catalog="system" width="128" height="104"/>
