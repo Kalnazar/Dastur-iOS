@@ -8,10 +8,15 @@
 import UIKit
 import JGProgressHUD
 
+protocol SearchResultsDelegate {
+    func itemPressed(_ tradition: TraditionModel)
+}
+
 class SearchResultsViewController: UIViewController {
     
     public var results = [[String: String]]()
     public let spinner = JGProgressHUD(style: .dark)
+    var delegate: SearchResultsDelegate?
 
     public let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -39,8 +44,11 @@ extension SearchResultsViewController: UICollectionViewDelegate, UICollectionVie
         if let cell = collectionView.cellForItem(at: indexPath) {
             cell.contentView.backgroundColor = UIColor(named: "AppClicked")
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+                guard let strongSelf = self else { return }
                 cell.contentView.backgroundColor = nil
+                let results = strongSelf.results[indexPath.row]
+                strongSelf.delegate?.itemPressed(TraditionModel(name: results["name"]!, imageName: results["image_name"]!, description: results["description"]!, rating: results["rating"]!, type: results["typeId"]!))
             }
         }
         collectionView.deselectItem(at: indexPath, animated: true)

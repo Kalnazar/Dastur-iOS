@@ -57,7 +57,6 @@ class FavoritesViewController: UIViewController {
             guard let strongSelf = self else { return }
             switch result {
             case .success(let favourites):
-                print(favourites)
                 DispatchQueue.main.async {
                     strongSelf.favourites = favourites
                     strongSelf.collectionView.reloadData()

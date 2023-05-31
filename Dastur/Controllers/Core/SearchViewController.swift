@@ -12,13 +12,8 @@ class SearchViewController: UIViewController {
     
     private let spinner = JGProgressHUD(style: .dark)
     
-    private var types = [[String: String]]()
-    private var typesFetched = false
-    
     private var traditions = [[String: String]]()
     private var hasFetched = false
-    
-    @IBOutlet weak var collectionView: UICollectionView!
     
     private let searchController: UISearchController = {
         let controller = UISearchController(searchResultsController: SearchResultsViewController())
@@ -32,72 +27,12 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        
         navigationItem.searchController = searchController
         searchController.searchResultsUpdater = self
-        
-        if !typesFetched {
-            getTypes()
-        }
-    }
-    
-    private func getTypes() {
-        spinner.show(in: view)
-        DatabaseManager.shared.getAllData(from: "types", completion: { [weak self] result in
-            guard let strongSelf = self else {
-                return
-            }
-            switch result {
-            case .success(let types):
-                DispatchQueue.main.async {
-                    strongSelf.types = types
-                    strongSelf.typesFetched = true
-                    strongSelf.collectionView.reloadData()
-                    strongSelf.spinner.dismiss()
-                }
-            case .failure(let error):
-                print("Failed to get data: \(error)")
-            }
-        })
     }
 }
 
-extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) {
-            cell.contentView.backgroundColor = UIColor(named: "AppClicked")
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                cell.contentView.backgroundColor = nil
-            }
-        }
-        collectionView.deselectItem(at: indexPath, animated: true)
-        print(types[indexPath.row])
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as? CategoryCollectionViewCell else {
-            return UICollectionViewCell()
-        }
-        let type = types[indexPath.row]
-        cell.configure(image: "default", title: type["name"]!, amount: types.count)
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return types.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemWidth = UIScreen.main.bounds.width - 20
-        let itemHeight = 110.0
-        return CGSize(width: itemWidth, height: itemHeight)
-    }
-}
-
-extension SearchViewController: UISearchResultsUpdating {
+extension SearchViewController: UISearchResultsUpdating, SearchResultsDelegate {
     
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
@@ -106,6 +41,7 @@ extension SearchViewController: UISearchResultsUpdating {
               let resultsController = searchController.searchResultsController as? SearchResultsViewController else {
                   return
         }
+        resultsController.delegate = self
         resultsController.results.removeAll()
         resultsController.spinner.show(in: view)
         searchFrom(query: query)
@@ -149,6 +85,15 @@ extension SearchViewController: UISearchResultsUpdating {
         DispatchQueue.main.async {
             resultsController.collectionView.reloadData()
             resultsController.spinner.dismiss()
+        }
+    }
+    
+    func itemPressed(_ tradition: TraditionModel) {
+        DispatchQueue.main.async { [weak self] in
+            let vc = self?.storyboard?.instantiateViewController(identifier: TraditionViewController.identifier) as! TraditionViewController
+            vc.configure(tradition)
+            vc.modalPresentationStyle = .formSheet
+            self?.present(vc, animated: true)
         }
     }
 }
