@@ -25,6 +25,8 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        emailField.delegate = self
+        passwordField.delegate = self
     }
 
     @IBAction func signInPressed(_ sender: UIButton) {
@@ -56,5 +58,15 @@ class SignInViewController: UIViewController {
             UserDefaults.standard.set(email, forKey: "userEmailKey")
             strongSelf.navigationController?.dismiss(animated: true)
         }
+    }
+}
+
+extension SignInViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.resignFirstResponder()
     }
 }

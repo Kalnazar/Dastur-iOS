@@ -19,6 +19,9 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        usernameField.delegate = self
+        emailField.delegate = self
+        passwordField.delegate = self
     }
 
     @IBAction func signUpPressed(_ sender: UIButton) {
@@ -58,5 +61,15 @@ class SignUpViewController: UIViewController {
             }
 
         }
+    }
+}
+
+extension SignUpViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.resignFirstResponder()
     }
 }

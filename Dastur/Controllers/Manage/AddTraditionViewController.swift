@@ -95,6 +95,9 @@ class AddTraditionViewController: UIViewController {
         pickerViewType.delegate = self
         pickerViewType.dataSource = self
         
+        nameField.delegate = self
+        descriptionTextView.delegate = self
+        
         let gesture = UITapGestureRecognizer(target: self, action: #selector(didPressChangeProfilePic))
         traditionImage.addGestureRecognizer(gesture)
     }
@@ -165,4 +168,14 @@ extension AddTraditionViewController: UIImagePickerControllerDelegate, UINavigat
         picker.dismiss(animated: true)
     }
     
+}
+
+extension AddTraditionViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.resignFirstResponder()
+    }
 }

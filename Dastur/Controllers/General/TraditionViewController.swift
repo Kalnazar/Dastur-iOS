@@ -83,8 +83,8 @@ class TraditionViewController: UIViewController {
         Database.database().reference().child("favourites").child(uid).observeSingleEvent(of: .value, with: { [weak self] snapshot in
             guard let strongSelf = self else { return }
             if let favourites = snapshot.value as? [String] {
-                let traditionId = strongSelf.traditionId
-                if favourites.contains(traditionId!) {
+                guard let traditionId = strongSelf.traditionId else { return }
+                if favourites.contains(traditionId) {
                     print("Liked")
                     strongSelf.isLiked = true
                     strongSelf.likeButton.isSelected = true
