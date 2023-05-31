@@ -12,26 +12,83 @@ class ProfileViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var createButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         
-        imageSetup()
+        configureNavbar()
+        imageViewSetup()
         getInfo()
         profileImage()
+        createButton.isHidden = true
     }
     
+    @objc private func didPressChangeProfilePic() {
+        presentPhotoActionSheet()
+    }
+    
+    @objc private func signOut() {
+        let actionSheet = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Log out", style: .destructive, handler: { [weak self] _ in
+            guard let strongSelf = self else {
+                return
+            }
+            UserDefaults.standard.setValue(nil, forKey: "userEmailKey")
+            UserDefaults.standard.setValue(nil, forKey: "userNameKey")
+            do {
+                try FirebaseAuth.Auth.auth().signOut()
+                let welcomeScreen = strongSelf.storyboard?.instantiateViewController(withIdentifier: "WelcomNavigationController") as! UINavigationController
+                welcomeScreen.modalPresentationStyle = .fullScreen
+                strongSelf.present(welcomeScreen, animated: true)
+                DispatchQueue.main.async {
+                    guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                          let sceneDelegate = windowScene.delegate as? SceneDelegate,
+                          let window = sceneDelegate.window else {
+                        return
+                    }
+                    window.rootViewController = strongSelf.storyboard?.instantiateInitialViewController()
+                    window.makeKeyAndVisible()
+                }
+            } catch {
+                print("Failed to log out")
+            }
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(actionSheet, animated: true)
+    }
+    
+    @IBAction func createPressed(_ sender: UIButton) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "ManageNavigationController") as! UINavigationController
+        vc.modalPresentationStyle = .formSheet
+        present(vc, animated: true)
+    }
+}
+
+// MARK: - Profile View Setting
+
+extension ProfileViewController {
     private func getInfo() {
         let defaults = UserDefaults.standard
         
-        Service.getUserInfo {
-            self.usernameLabel.text = defaults.string(forKey: "userNameKey")
+        Service.getUserInfo { [weak self] in
+            self?.usernameLabel.text = defaults.string(forKey: "userNameKey")
+            if defaults.string(forKey: "userEmailKey") == "sayat@gmail.com" {
+                self?.createButton.isHidden = false
+            }
         } onError: { error in
             print(error!.localizedDescription)
         }
-
+    }
+    
+    private func configureNavbar() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Profile", style: .done, target: self, action: nil)
+        
+        navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(image: UIImage(systemName: "rectangle.portrait.and.arrow.right"), style: .done, target: self, action: #selector(signOut))
+        ]
+        navigationController?.navigationBar.tintColor = .label
     }
     
     private func profileImage() {
@@ -74,48 +131,16 @@ class ProfileViewController: UIViewController {
         }
     }
     
-    @objc private func didPressChangeProfilePic() {
-        presentPhotoActionSheet()
-    }
-    
-    private func imageSetup() {
+    private func imageViewSetup() {
         imageView.cornerRadius = imageView.frame.size.width / 2
         imageView.clipsToBounds = true
         imageView.layer.masksToBounds = true
         let gesture = UITapGestureRecognizer(target: self, action: #selector(didPressChangeProfilePic))
         imageView.addGestureRecognizer(gesture)
     }
-    
-    @IBAction func signOut(_ sender: UIButton) {
-        let actionSheet = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: "Log out", style: .destructive, handler: { [weak self] _ in
-            guard let strongSelf = self else {
-                return
-            }
-            UserDefaults.standard.setValue(nil, forKey: "userEmailKey")
-            UserDefaults.standard.setValue(nil, forKey: "userNameKey")
-            do {
-                try FirebaseAuth.Auth.auth().signOut()
-                let welcomeScreen = strongSelf.storyboard?.instantiateViewController(withIdentifier: "WelcomNavigationController") as! UINavigationController
-                welcomeScreen.modalPresentationStyle = .fullScreen
-                strongSelf.present(welcomeScreen, animated: true)
-                DispatchQueue.main.async {
-                    guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                          let sceneDelegate = windowScene.delegate as? SceneDelegate,
-                          let window = sceneDelegate.window else {
-                        return
-                    }
-                    window.rootViewController = strongSelf.storyboard?.instantiateInitialViewController()
-                    window.makeKeyAndVisible()
-                }
-            } catch {
-                print("Failed to log out")
-            }
-        }))
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        present(actionSheet, animated: true)
-    }
 }
+
+// MARK: - Profile View ImagePicker
 
 extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     

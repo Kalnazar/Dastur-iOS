@@ -95,7 +95,7 @@ extension FavoritesViewController: UICollectionViewDelegate, UICollectionViewDat
                     return
                 }
                 let favourite = strongSelf.favourites[indexPath.row]
-                vc.configure(TraditionModel(name: favourite["name"]!, imageName: favourite["image_name"]!, description: favourite["description"]!, rating: favourite["rating"]!, type: favourite["typeId"]!))
+                vc.configure(TraditionModel(name: favourite["name"]!, imageName: favourite["image_name"]!, description: favourite["description"]!, rating: favourite["rating"]!, typeID: favourite["typeId"]!))
                 vc.modalPresentationStyle = .formSheet
                 strongSelf.present(vc, animated: true)
                 cell.contentView.backgroundColor = nil

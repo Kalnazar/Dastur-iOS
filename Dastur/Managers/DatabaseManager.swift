@@ -28,7 +28,6 @@ final class DatabaseManager {
 // MARK: - Account Management
 
 extension DatabaseManager {
-    
     public func userExists(with email: String,
                            completion: @escaping ((Bool) -> Void)) {
         
@@ -42,32 +41,6 @@ extension DatabaseManager {
             }
             completion(true)
         }
-    }
-    
-    public func getAllData(from collection: String, completion: @escaping (Result<[[String: String]], Error>) -> Void) {
-        database.child(collection).observeSingleEvent(of: .value, with: { snapshot in
-            guard let collection = snapshot.value as? [[String: String]] else {
-                completion(.failure(DatabaseError.failedToFetch))
-                return
-            }
-            completion(.success(collection))
-        })
-    }
-    
-    public func getDataOfType(id: String, completion: @escaping (Result<[[String: String]], Error>) -> Void) {
-        database.child("traditions").observeSingleEvent(of: .value, with: { snapshot in
-            guard let collection = snapshot.value as? [[String: String]] else {
-                completion(.failure(DatabaseError.failedToFetch))
-                return
-            }
-            var traditions = [[String: String]]()
-            for tradition in collection {
-                if tradition["typeId"] == id {
-                    traditions.append(tradition)
-                }
-            }
-            completion(.success(traditions))
-        })
     }
 }
 
@@ -147,4 +120,66 @@ extension DatabaseManager {
         }
     }
 
+}
+
+// MARK: - Tradition management
+
+extension DatabaseManager {
+    public func uploadTradition(with tradition: TraditionModel) {
+        self.database.child("traditions").observeSingleEvent(of: .value) { [weak self] snapshot in
+            guard let strongSelf = self else {
+                return
+            }
+            if var traditionsCollection = snapshot.value as? [[String: String]] {
+                // Append to tradition dictionary
+                let newTradition = [
+                    "name": tradition.name,
+                    "description": tradition.description,
+                    "image_name": tradition.imageName,
+                    "rating": tradition.rating,
+                    "typeId": tradition.typeID
+                ]
+                traditionsCollection.append(newTradition)
+                strongSelf.database.child("traditions").setValue(traditionsCollection)
+            } else {
+                // Create a new collection
+                let newTradition: [[String: String]] = [
+                    [
+                        "name": tradition.name,
+                        "description": tradition.description,
+                        "image_name": tradition.imageName,
+                        "rating": tradition.rating,
+                        "typeId": tradition.typeID
+                    ]
+                ]
+                strongSelf.database.child("traditions").setValue(newTradition)
+            }
+        }
+    }
+    
+    public func getAllData(from collection: String, completion: @escaping (Result<[[String: String]], Error>) -> Void) {
+        database.child(collection).observeSingleEvent(of: .value, with: { snapshot in
+            guard let collection = snapshot.value as? [[String: String]] else {
+                completion(.failure(DatabaseError.failedToFetch))
+                return
+            }
+            completion(.success(collection))
+        })
+    }
+    
+    public func getDataOfType(id: String, completion: @escaping (Result<[[String: String]], Error>) -> Void) {
+        database.child("traditions").observeSingleEvent(of: .value, with: { snapshot in
+            guard let collection = snapshot.value as? [[String: String]] else {
+                completion(.failure(DatabaseError.failedToFetch))
+                return
+            }
+            var traditions = [[String: String]]()
+            for tradition in collection {
+                if tradition["typeId"] == id {
+                    traditions.append(tradition)
+                }
+            }
+            completion(.success(traditions))
+        })
+    }
 }

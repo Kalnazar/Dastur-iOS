@@ -34,11 +34,32 @@ final class StorageManager {
                 }
                 
                 let urlString = url.absoluteString
-                print(urlString)
                 completion(.success(urlString))
             }
         }
     }
+    
+    public func uploadTraditionImage(with data: Data, filename: String) {
+        let imagePath = "traditions/\(filename)"
+        
+        storage.child(imagePath).putData(data, metadata: nil) { [weak self] metaData, error in
+            guard error == nil else {
+                print("Failed to upload data to Firebase for tradition image")
+                return
+            }
+            
+            self?.storage.child(imagePath).downloadURL { url, error in
+                guard let url = url else {
+                    print("Failed to get download URL for tradition image")
+                    return
+                }
+                
+                let urlString = url.absoluteString
+                print(urlString)
+            }
+        }
+    }
+
     
     public enum StorageErrors: Error {
         case failedToUpload

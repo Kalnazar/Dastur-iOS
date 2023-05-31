@@ -12,5 +12,5 @@ struct TraditionModel {
     let imageName: String
     let description: String
     let rating: String
-    let type: String
+    let typeID: String
 }

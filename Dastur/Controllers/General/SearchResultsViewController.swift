@@ -48,7 +48,7 @@ extension SearchResultsViewController: UICollectionViewDelegate, UICollectionVie
                 guard let strongSelf = self else { return }
                 cell.contentView.backgroundColor = nil
                 let results = strongSelf.results[indexPath.row]
-                strongSelf.delegate?.itemPressed(TraditionModel(name: results["name"]!, imageName: results["image_name"]!, description: results["description"]!, rating: results["rating"]!, type: results["typeId"]!))
+                strongSelf.delegate?.itemPressed(TraditionModel(name: results["name"]!, imageName: results["image_name"]!, description: results["description"]!, rating: results["rating"]!, typeID: results["typeId"]!))
             }
         }
         collectionView.deselectItem(at: indexPath, animated: true)

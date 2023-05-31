@@ -7,11 +7,13 @@
 
 import UIKit
 import Firebase
+import JGProgressHUD
 
 class TraditionViewController: UIViewController {
     
     static let identifier = "TraditionViewController"
     private var isLiked = false
+    private let spinner = JGProgressHUD(style: .dark)
     
     private let heartFillIcon = "heart.fill"
     private let heartIcon = "heart"
@@ -38,6 +40,7 @@ class TraditionViewController: UIViewController {
     }
     
     public func configure(_ tradition: TraditionModel) {
+        spinner.show(in: view)
         DispatchQueue.main.async { [weak self] in
             guard let strongSelf = self else { return }
             let path = "traditions/" + tradition.imageName
@@ -54,6 +57,7 @@ class TraditionViewController: UIViewController {
             strongSelf.rating.text = "Rating \(tradition.rating)"
             strongSelf.descriptionTextView.text = tradition.description
             strongSelf.traditionId = tradition.name
+            strongSelf.spinner.dismiss()
         }
     }
     

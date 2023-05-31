@@ -72,13 +72,13 @@ class HomeViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Dastur", style: .done, target: self, action: nil)
         
         navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(image: UIImage(systemName: "person"), style: .done, target: self, action: #selector(rightBarButtonItemTapped))
+            UIBarButtonItem(image: UIImage(systemName: "network"), style: .done, target: self, action: #selector(rightBarButtonItemTapped))
         ]
         navigationController?.navigationBar.tintColor = .label
     }
     
     @objc func rightBarButtonItemTapped() {
-        print("Profile pressed")
+        print("network")
     }
     
     override func viewDidLayoutSubviews() {
