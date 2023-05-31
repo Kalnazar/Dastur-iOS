@@ -11,7 +11,7 @@ class HomeHeaderUIView: UIView {
     
     private let headerLabel: UILabel = {
         let label = UILabel()
-        label.text = "Шагните в мир кочевых традиции"
+        label.text = "Step into the world of nomadic traditions"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 20)
         label.alpha = 0.85
