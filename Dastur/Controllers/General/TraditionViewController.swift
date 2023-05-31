@@ -13,6 +13,9 @@ class TraditionViewController: UIViewController {
     static let identifier = "TraditionViewController"
     private var isLiked = false
     
+    private let heartFillIcon = "heart.fill"
+    private let heartIcon = "heart"
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var rating: UILabel!
@@ -62,7 +65,7 @@ class TraditionViewController: UIViewController {
     @IBAction func likePressed(_ sender: UIButton) {
         isLiked.toggle()
         likeButton.isSelected = isLiked
-        likeButton.setImage(UIImage(systemName: isLiked ? "heart.fill" : "heart"), for: .normal)
+        likeButton.setImage(UIImage(systemName: isLiked ? heartFillIcon : heartIcon), for: .normal)
         
         if isLiked {
             DatabaseManager.shared.addToFavourites(id: traditionId!)
@@ -81,7 +84,7 @@ class TraditionViewController: UIViewController {
                     print("Liked")
                     strongSelf.isLiked = true
                     strongSelf.likeButton.isSelected = true
-                    strongSelf.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                    strongSelf.likeButton.setImage(UIImage(systemName: strongSelf.heartFillIcon), for: .normal)
                 }
             }
         })

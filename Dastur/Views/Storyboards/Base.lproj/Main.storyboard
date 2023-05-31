@@ -694,47 +694,10 @@
                     <view key="view" contentMode="scaleToFill" id="eut-Nz-9Og">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CKf-DD-ZCy">
-                                <rect key="frame" x="0.0" y="103" width="393" height="749"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="utb-et-wcf">
-                                    <size key="itemSize" width="393" height="220"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TraditionCardCollectionViewCell" id="opY-jn-rYB" customClass="TraditionCardCollectionViewCell" customModule="Dastur" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="220"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Fye-3E-YWL">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="220"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </collectionViewCellContentView>
-                                        <size key="customSize" width="393" height="220"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="rJg-e8-naU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="CKf-DD-ZCy" secondAttribute="bottom" id="AL9-jY-qf4"/>
-                            <constraint firstItem="CKf-DD-ZCy" firstAttribute="trailing" secondItem="rJg-e8-naU" secondAttribute="trailing" id="N0Q-Ad-saO"/>
-                            <constraint firstItem="CKf-DD-ZCy" firstAttribute="leading" secondItem="rJg-e8-naU" secondAttribute="leading" id="Wx0-v0-5QB"/>
-                            <constraint firstItem="CKf-DD-ZCy" firstAttribute="top" secondItem="rJg-e8-naU" secondAttribute="top" id="nHb-vM-rnC"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Favorites" id="0Yg-iW-eZ7"/>
-                    <connections>
-                        <outlet property="collectionView" destination="CKf-DD-ZCy" id="mQx-pG-MJq"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YeE-4b-pCH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
