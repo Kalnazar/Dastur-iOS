@@ -47,11 +47,9 @@ final class StorageManager {
             }
             
             self?.storage.child(imagePath).downloadURL { url, error in
-                guard let url = url else {
+                guard url != nil else {
                     return
                 }
-                
-                let urlString = url.absoluteString
             }
         }
     }

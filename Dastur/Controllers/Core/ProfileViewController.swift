@@ -74,7 +74,7 @@ extension ProfileViewController {
         
         Service.getUserInfo { [weak self] in
             self?.usernameLabel.text = defaults.string(forKey: "userNameKey")
-            if defaults.string(forKey: "userEmailKey") == "sayat@gmail.com" {
+            if defaults.string(forKey: "userEmailKey") == "kalnazar.sayat@gmail.com" {
                 self?.createButton.isHidden = false
             }
         } onError: { error in
