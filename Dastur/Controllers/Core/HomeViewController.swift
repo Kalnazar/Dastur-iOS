@@ -78,7 +78,6 @@ class HomeViewController: UIViewController {
     }
     
     @objc func rightBarButtonItemTapped() {
-        print("network")
     }
     
     override func viewDidLayoutSubviews() {

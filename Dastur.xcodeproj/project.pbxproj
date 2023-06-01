@@ -16,8 +16,6 @@
 		1A49C1C22A21F1EA00AEA785 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A49C1C12A21F1EA00AEA785 /* CategoryCollectionViewCell.swift */; };
 		1A4BDD702A249AAB0052430B /* TraditionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4BDD6F2A249AAB0052430B /* TraditionModel.swift */; };
 		1A4BDD722A24C0DD0052430B /* TraditionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4BDD712A24C0DD0052430B /* TraditionViewModel.swift */; };
-		1A61CA042A20D574004D4D73 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 1A61CA032A20D574004D4D73 /* SDWebImage */; };
-		1A61CA062A20D574004D4D73 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1A61CA052A20D574004D4D73 /* SDWebImageMapKit */; };
 		1A61CA092A20D5DC004D4D73 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 1A61CA082A20D5DC004D4D73 /* JGProgressHUD */; };
 		1A61CA0B2A20DF6E004D4D73 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A61CA0A2A20DF6E004D4D73 /* StorageManager.swift */; };
 		1A89B5B62A222EF600B4E13B /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A89B5B52A222EF600B4E13B /* SearchResultsViewController.swift */; };
@@ -105,13 +103,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A61CA042A20D574004D4D73 /* SDWebImage in Frameworks */,
 				1ADBBA842A1D0C8C00513AF7 /* FirebaseDatabase in Frameworks */,
 				1ADBBA862A1D0C8C00513AF7 /* FirebaseFirestore in Frameworks */,
 				1ADBBA802A1D0C8C00513AF7 /* FirebaseAnalytics in Frameworks */,
 				1A61CA092A20D5DC004D4D73 /* JGProgressHUD in Frameworks */,
 				1ADBBA882A1D0C8C00513AF7 /* FirebaseStorage in Frameworks */,
-				1A61CA062A20D574004D4D73 /* SDWebImageMapKit in Frameworks */,
 				1ADBBA822A1D0C8C00513AF7 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -340,8 +336,6 @@
 				1ADBBA832A1D0C8C00513AF7 /* FirebaseDatabase */,
 				1ADBBA852A1D0C8C00513AF7 /* FirebaseFirestore */,
 				1ADBBA872A1D0C8C00513AF7 /* FirebaseStorage */,
-				1A61CA032A20D574004D4D73 /* SDWebImage */,
-				1A61CA052A20D574004D4D73 /* SDWebImageMapKit */,
 				1A61CA082A20D5DC004D4D73 /* JGProgressHUD */,
 			);
 			productName = Dastur;
@@ -374,7 +368,6 @@
 			mainGroup = 1A22E1682A1B6FA40068EE92;
 			packageReferences = (
 				1ADBBA7E2A1D0C8C00513AF7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				1A61CA022A20D574004D4D73 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				1A61CA072A20D5DC004D4D73 /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
 			);
 			productRefGroup = 1A22E1722A1B6FA40068EE92 /* Products */;
@@ -659,14 +652,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		1A61CA022A20D574004D4D73 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
 		1A61CA072A20D5DC004D4D73 /* XCRemoteSwiftPackageReference "JGProgressHUD" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/JonasGessner/JGProgressHUD.git";
@@ -686,16 +671,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		1A61CA032A20D574004D4D73 /* SDWebImage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1A61CA022A20D574004D4D73 /* XCRemoteSwiftPackageReference "SDWebImage" */;
-			productName = SDWebImage;
-		};
-		1A61CA052A20D574004D4D73 /* SDWebImageMapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1A61CA022A20D574004D4D73 /* XCRemoteSwiftPackageReference "SDWebImage" */;
-			productName = SDWebImageMapKit;
-		};
 		1A61CA082A20D5DC004D4D73 /* JGProgressHUD */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1A61CA072A20D5DC004D4D73 /* XCRemoteSwiftPackageReference "JGProgressHUD" */;

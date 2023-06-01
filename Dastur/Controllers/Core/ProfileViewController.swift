@@ -122,9 +122,8 @@ extension ProfileViewController {
         let filename = userData.profilePictureFileName
         StorageManager.shared.uploadProfilePicture(with: data, filename: filename) { results in
             switch results {
-            case .success(let downloadUrl):
+            case .success(_):
                 Core.shared.setDoesUserHaveProfilePicture()
-                print(downloadUrl)
             case .failure(let error):
                 print("Storage manager error: \(error)")
             }

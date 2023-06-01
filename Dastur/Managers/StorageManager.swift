@@ -28,7 +28,6 @@ final class StorageManager {
             }
             self?.storage.child("images/\(filename)").downloadURL { url, error in
                 guard let url = url else {
-                    print("Failed to get download url")
                     completion(.failure(StorageErrors.failedToGetDownloadUrl))
                     return
                 }
@@ -44,18 +43,15 @@ final class StorageManager {
         
         storage.child(imagePath).putData(data, metadata: nil) { [weak self] metaData, error in
             guard error == nil else {
-                print("Failed to upload data to Firebase for tradition image")
                 return
             }
             
             self?.storage.child(imagePath).downloadURL { url, error in
                 guard let url = url else {
-                    print("Failed to get download URL for tradition image")
                     return
                 }
                 
                 let urlString = url.absoluteString
-                print(urlString)
             }
         }
     }

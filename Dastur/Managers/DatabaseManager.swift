@@ -54,7 +54,6 @@ extension DatabaseManager {
             guard let strongSelf = self else { return }
             if var favourites = snapshot.value as? [String] {
                 if favourites.contains(id) {
-                    print("Tradition already in favourites")
                     return
                 }
                 favourites.append(id)
